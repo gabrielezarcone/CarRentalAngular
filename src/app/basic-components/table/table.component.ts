@@ -2,10 +2,23 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class TableConfig{
   headers: MyHeaders[];
-  constructor(headers: MyHeaders[]) {
+  order: MyOrder;
+
+  constructor(headers: MyHeaders[], order: MyOrder) {
     this.headers = headers;
+    this.order = order;
   }
 }
+
+export class MyOrder {
+  defaultColumn: string;
+  orderType: string;
+  constructor(defaultColumn: string, orderType: string) {
+    this.defaultColumn = defaultColumn;
+    this.orderType = orderType;
+  }
+}
+
 
 export class MyHeaders{
   key: string;
