@@ -1,0 +1,12 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let head of config.headers">{{head.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of data">
+      <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
+    </tr>
+  </tbody>
+</table>
