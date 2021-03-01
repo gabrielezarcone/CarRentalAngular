@@ -1,1 +1,12 @@
-<p>table works!</p>
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let head of config.headers">{{head.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let dato of data">{{dato}}</td>
+    </tr>
+  </tbody>
+</table>
