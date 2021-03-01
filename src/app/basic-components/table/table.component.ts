@@ -41,6 +41,22 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('helloooo');
   }
 
+  orderBy(key: string): void {
+    this.toggleOrderType();
+    this.data.sort((a, b) => {
+      if (this.config.order.orderType === 'asc'){
+        return (a[key] > b[key]) ? 1 : -1;
+      }
+      else {
+        return (a[key] < b[key]) ? 1 : -1;
+      }
+    });
+  }
+
+  toggleOrderType(): void{
+    this.config.order.orderType = this.config.order.orderType === 'desc' ? 'asc' : 'desc';
+  }
 }
