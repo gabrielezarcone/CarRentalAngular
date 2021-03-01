@@ -11,7 +11,8 @@ import { TableComponent } from './table/table.component';
     CommonModule
   ],
   exports: [
-    MyButtonComponent
+    MyButtonComponent,
+    TableComponent
   ]
 })
 export class BasicComponentsModule { }
