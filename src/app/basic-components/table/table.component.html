@@ -5,8 +5,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td *ngFor="let dato of data">{{dato}}</td>
+    <tr *ngFor="let obj of data">
+      <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
     </tr>
   </tbody>
 </table>

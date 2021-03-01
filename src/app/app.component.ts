@@ -10,7 +10,7 @@ import {MyHeaders, TableConfig} from './basic-components/table/table.component';
 export class AppComponent {
   title = 'CarRentalAngular';
   btnConfig: MyButtonConfig = new MyButtonConfig('hello');
-  headers: MyHeaders[] = [new MyHeaders('1', 'a'), new MyHeaders('2', 'b'), new MyHeaders('3', 'c')];
+  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome')];
   tableConfig: TableConfig = new TableConfig(this.headers);
-  tableData: any[] = [1, 2, 3];
+  tableData: any[] = [{name: 'a', surname: 'A'}, {name: 'b', surname: 'B'}, {name: 'c', surname: 'C'}, ];
 }
