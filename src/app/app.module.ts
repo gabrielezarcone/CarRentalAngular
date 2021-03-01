@@ -3,12 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import {BasicComponentsModule} from './basic-components/basic-components.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BasicComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

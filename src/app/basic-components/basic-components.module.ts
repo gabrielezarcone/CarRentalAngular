@@ -8,6 +8,9 @@ import { MyButtonComponent } from './my-button/my-button.component';
   declarations: [MyButtonComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MyButtonComponent
   ]
 })
 export class BasicComponentsModule { }
