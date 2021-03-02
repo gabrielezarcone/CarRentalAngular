@@ -8,6 +8,18 @@ export class TableConfig{
     this.headers = headers;
     this.order = order;
   }
+  resetIcons(): void{
+    for (const header of this.headers){
+      header.icon = '';
+    }
+  }
+  setIcon(icon: string, key: string): void{
+    for (const header of this.headers){
+      if (header.key === key){
+        header.setIcon(icon);
+      }
+    }
+  }
 }
 
 export class MyOrder {
@@ -23,9 +35,13 @@ export class MyOrder {
 export class MyHeaders{
   key: string;
   label: string;
+  icon: string;
   constructor(key: string, label: string) {
     this.key = key;
     this.label = label;
+  }
+  setIcon(icon: string): void{
+    this.icon = icon;
   }
 }
 
@@ -46,11 +62,14 @@ export class TableComponent implements OnInit {
 
   orderBy(key: string): void {
     this.toggleOrderType();
+    this.config.resetIcons();
     this.data.sort((a, b) => {
       if (this.config.order.orderType === 'asc'){
+        this.config.setIcon('🔺', key);
         return (a[key] > b[key]) ? 1 : -1;
       }
       else {
+        this.config.setIcon('🔻', key);
         return (a[key] < b[key]) ? 1 : -1;
       }
     });

@@ -12,8 +12,8 @@ export class AppComponent {
   btnConfig: MyButtonConfig = new MyButtonConfig('hello');
   // Table --------------------------------------------------------------------------------------------------
   order: MyOrder = new MyOrder('name', 'asc');
-  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome')];
+  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome'), new MyHeaders('age', 'Età')];
   tableConfig: TableConfig = new TableConfig(this.headers, this.order);
-  tableData: any[] = [{name: 'a', surname: 'A'}, {name: 'b', surname: 'B'}, {name: 'c', surname: 'C'}, ];
+  tableData: any[] = [{name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20} ];
   // --------------------------------------------------------------------------------------------------
 }

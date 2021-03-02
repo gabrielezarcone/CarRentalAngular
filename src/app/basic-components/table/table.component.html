@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <th *ngFor="let head of config.headers" (click)="orderBy(head.key)">{{head.label}}</th>
+      <th *ngFor="let head of config.headers" (click)="orderBy(head.key)">{{head.label}} {{head.icon}}</th>
     </tr>
   </thead>
   <tbody>
