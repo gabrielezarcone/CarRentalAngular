@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MyButtonConfig} from './basic-components/my-button/my-button.component';
-import {MyHeaders, TableConfig} from './basic-components/table/table.component';
+import {MyHeaders, MyOrder, TableConfig} from './basic-components/table/table.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,10 @@ import {MyHeaders, TableConfig} from './basic-components/table/table.component';
 export class AppComponent {
   title = 'CarRentalAngular';
   btnConfig: MyButtonConfig = new MyButtonConfig('hello');
-  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome')];
-  tableConfig: TableConfig = new TableConfig(this.headers);
-  tableData: any[] = [{name: 'a', surname: 'A'}, {name: 'b', surname: 'B'}, {name: 'c', surname: 'C'}, ];
+  // Table --------------------------------------------------------------------------------------------------
+  order: MyOrder = new MyOrder('name', 'asc');
+  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome'), new MyHeaders('age', 'Età')];
+  tableConfig: TableConfig = new TableConfig(this.headers, this.order);
+  tableData: any[] = [{name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20} ];
+  // --------------------------------------------------------------------------------------------------
 }
