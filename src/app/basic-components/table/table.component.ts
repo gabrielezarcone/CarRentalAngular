@@ -34,6 +34,7 @@ export class TableConfig{
 
 export class MySearch{
   columns: string[] = []; // specifica su quali colonne viene effettuata la ricerca
+  text: string; // testo cercato dall'utente
   setColumns(columns: string[]): void{
     this.columns = columns;
   }
@@ -75,10 +76,12 @@ export class MyHeaders{
 export class TableComponent implements OnInit {
   @Input() config: TableConfig;
   @Input() data: any[];
+  renderedData: any[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.renderedData = this.data;
   }
 
   orderBy(key: string): void {
@@ -110,6 +113,21 @@ export class TableComponent implements OnInit {
     else {
       this.config.setSearchCss('filterFalse', key);
       this.config.search.columns = _.filter(columns, (n) => n !== key);
+    }
+  }
+
+  filtra(text: string): void {
+    if (text === ''){
+      this.renderedData = this.data;
+    }
+    else {
+      this.renderedData = _.filter(this.data, (dato) => {
+        for (const column of this.config.search.columns){
+          if (dato[column] === text){
+            return dato;
+          }
+        }
+      });
     }
   }
 }
