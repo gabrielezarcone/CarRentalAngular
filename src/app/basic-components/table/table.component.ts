@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class TableConfig{
   headers: MyHeaders[];
   order: MyOrder;
-
+  search: MySearch;
   constructor(headers: MyHeaders[], order: MyOrder) {
     this.headers = headers;
     this.order = order;
@@ -21,6 +21,15 @@ export class TableConfig{
     }
   }
 }
+
+
+export class MySearch{
+  columns: string[]; // specifica su quali colonne viene effettuata la ricerca
+  setColumns(columns: string[]): void{
+    this.columns = columns;
+  }
+}
+
 
 export class MyOrder {
   defaultColumn: string;
