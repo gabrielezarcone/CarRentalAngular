@@ -123,7 +123,7 @@ export class TableComponent implements OnInit {
     else {
       this.renderedData = _.filter(this.data, (dato) => {
         for (const column of this.config.search.columns){
-          if (dato[column] === text){
+          if (dato[column].toString() === text){
             return dato;
           }
         }
