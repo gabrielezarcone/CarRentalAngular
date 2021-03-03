@@ -6,7 +6,6 @@
         <i class="bi bi-funnel-fill" (click)="toggleFilter(head.key)" [ngClass]="head.searchCss"></i>
       </th>
       <th>
-        <label for="search"></label>
         <input [ngModel]="config.search.text" (ngModelChange)="filtra($event)" type="text" id="search" placeholder="Filtra colonne" class="form-control">
       </th>
     </tr>
