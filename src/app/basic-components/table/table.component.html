@@ -16,4 +16,11 @@
       <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <span>Visualizza </span>
+      <input id="itemPerPage" type="text" [(ngModel)]="config.pagination.itemPerPage">
+      <span> elementi</span>
+    </tr>
+  </tfoot>
 </table>
