@@ -10,6 +10,7 @@ export class TableConfig{
     this.headers = headers;
     this.order = order;
     this.search = new MySearch();
+    this.pagination = new MyPagination();
   }
   resetIcons(): void{
     for (const header of this.headers){
@@ -36,6 +37,7 @@ export class TableConfig{
 export class MyPagination{
   itemPerPage: number;
   itemPerPageOptions: number[];
+  currentPage = 0;
 }
 
 
@@ -89,6 +91,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderedData = this.data;
+    this.config.pagination.itemPerPage = this.data.length;
   }
 
   orderBy(key: string): void {

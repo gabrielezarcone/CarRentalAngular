@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let obj of renderedData">
+    <tr *ngFor="let obj of renderedData | paginationPipe : config.pagination.itemPerPage : config.pagination.currentPage">
       <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
     </tr>
   </tbody>
