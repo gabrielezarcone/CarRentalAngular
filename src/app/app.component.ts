@@ -9,7 +9,7 @@ import {MyHeaders, MyOrder, TableConfig} from './basic-components/table/table.co
 })
 export class AppComponent {
   title = 'CarRentalAngular';
-  btnConfig: MyButtonConfig = new MyButtonConfig('hello');
+  btnConfig: MyButtonConfig = new MyButtonConfig('hello', undefined, 'tree-fill');
   // Table --------------------------------------------------------------------------------------------------
   order: MyOrder = new MyOrder('name', 'asc');
   headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome'), new MyHeaders('age', 'Età')];
