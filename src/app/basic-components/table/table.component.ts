@@ -35,8 +35,8 @@ export class TableConfig{
 
 
 export class MyPagination{
-  itemPerPage: number;
-  itemPerPageOptions: number[];
+  itemPerPage = 5;
+  itemPerPageOptions = [5, 10, 20, 50, 100, 500];
   currentPage = 0;
 }
 
@@ -91,7 +91,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderedData = this.data;
-    this.config.pagination.itemPerPage = this.data.length;
   }
 
   orderBy(key: string): void {

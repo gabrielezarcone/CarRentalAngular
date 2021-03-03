@@ -19,7 +19,9 @@
   <tfoot>
     <tr>
       <span>Visualizza </span>
-      <input id="itemPerPage" type="text" [(ngModel)]="config.pagination.itemPerPage">
+      <select [(ngModel)]="config.pagination.itemPerPage" name="itemPerPage" id="itemPerPage">
+        <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
+      </select>
       <span> elementi</span>
     </tr>
   </tfoot>
