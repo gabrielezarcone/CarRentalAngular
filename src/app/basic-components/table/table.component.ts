@@ -5,10 +5,12 @@ export class TableConfig{
   headers: MyHeaders[];
   order: MyOrder;
   search: MySearch;
+  pagination: MyPagination;
   constructor(headers: MyHeaders[], order: MyOrder) {
     this.headers = headers;
     this.order = order;
     this.search = new MySearch();
+    this.pagination = new MyPagination();
   }
   resetIcons(): void{
     for (const header of this.headers){
@@ -29,6 +31,13 @@ export class TableConfig{
       }
     }
   }
+}
+
+
+export class MyPagination{
+  itemPerPage = 5;
+  itemPerPageOptions = [5, 10, 20, 50, 100, 500];
+  currentPage = 0;
 }
 
 
@@ -129,5 +138,15 @@ export class TableComponent implements OnInit {
         }
       });
     }
+  }
+
+  previousPage(): void {
+    if (this.config.pagination.currentPage !== 0){
+      this.config.pagination.currentPage --;
+    }
+  }
+
+  nextPage(): void {
+    this.config.pagination.currentPage ++;
   }
 }

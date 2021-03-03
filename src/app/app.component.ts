@@ -14,6 +14,6 @@ export class AppComponent {
   order: MyOrder = new MyOrder('name', 'asc');
   headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome'), new MyHeaders('age', 'Età')];
   tableConfig: TableConfig = new TableConfig(this.headers, this.order);
-  tableData: any[] = [{name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20} ];
+  tableData: any[] = [{name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20}, {name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20}, {name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20}, {name: 'a', surname: 'A', age: 22}, {name: 'b', surname: 'B', age: 32}, {name: 'c', surname: 'C', age: 20} ];
   // --------------------------------------------------------------------------------------------------
 }
