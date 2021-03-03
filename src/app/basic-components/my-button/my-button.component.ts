@@ -1,13 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 export class MyButtonConfig {
-  customCssClass: string;
+  customCssClass = 'btn-primary';
   text: string;
-  icon: string;
+  icon: string; // nome dell'icona di bootstrap icon. Per esempio icon=alarm equivale a <i class="bi-alarm"></i>
 
-  constructor(text: string) {
-    this.text = text;
+  constructor(text?: string, cssClass?: string, icon?: string) {
+    if (text) {this.text = text; }
+    if (cssClass) { this.customCssClass = cssClass; }
+    if (icon) { this.icon = icon; }
   }
+
 }
 
 @Component({

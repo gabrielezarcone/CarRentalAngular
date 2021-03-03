@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as _ from 'lodash';
+import {MyButtonConfig} from '../my-button/my-button.component';
 
 export class TableConfig{
   headers: MyHeaders[];
@@ -86,6 +87,10 @@ export class TableComponent implements OnInit {
   @Input() config: TableConfig;
   @Input() data: any[];
   renderedData: any[];
+  // -------------------------------
+  prevBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-left-circle' );
+  nextBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-right-circle' );
+  // -------------------------------
 
   constructor() { }
 
@@ -98,11 +103,11 @@ export class TableComponent implements OnInit {
     this.config.resetIcons();
     this.data.sort((a, b) => {
       if (this.config.order.orderType === 'asc'){
-        this.config.setIcon('🔺', key);
+        this.config.setIcon('caret-up-fill', key);
         return (a[key] > b[key]) ? 1 : -1;
       }
       else {
-        this.config.setIcon('🔻', key);
+        this.config.setIcon('caret-down-fill', key);
         return (a[key] < b[key]) ? 1 : -1;
       }
     });
