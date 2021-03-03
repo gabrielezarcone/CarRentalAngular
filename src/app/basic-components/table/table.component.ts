@@ -5,6 +5,7 @@ export class TableConfig{
   headers: MyHeaders[];
   order: MyOrder;
   search: MySearch;
+  pagination: MyPagination;
   constructor(headers: MyHeaders[], order: MyOrder) {
     this.headers = headers;
     this.order = order;
@@ -29,6 +30,12 @@ export class TableConfig{
       }
     }
   }
+}
+
+
+export class MyPagination{
+  itemPerPage: number;
+  itemPerPageOptions: number[];
 }
 
 
