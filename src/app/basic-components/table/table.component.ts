@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as _ from 'lodash';
+import {MyButtonConfig} from '../my-button/my-button.component';
 
 export class TableConfig{
   headers: MyHeaders[];
@@ -86,6 +87,10 @@ export class TableComponent implements OnInit {
   @Input() config: TableConfig;
   @Input() data: any[];
   renderedData: any[];
+  // -------------------------------
+  prevBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-left-circle' );
+  nextBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-right-circle' );
+  // -------------------------------
 
   constructor() { }
 

@@ -31,9 +31,9 @@
     <tr >
       <td [colSpan]="config.headers.length + 1">
         <div class="horizontalAlignTd">
-          <span (click)="previousPage()">< </span>
+          <app-my-button [buttonConfig]="prevBtn" (click)="previousPage()"></app-my-button>
           <input [(ngModel)]="config.pagination.currentPage" type="text" class="form-control tableNumberInput">
-          <span (click)="nextPage()"> ></span>
+          <app-my-button [buttonConfig]="nextBtn" (click)="nextPage()">></app-my-button>
         </div>
       </td>
     </tr>
