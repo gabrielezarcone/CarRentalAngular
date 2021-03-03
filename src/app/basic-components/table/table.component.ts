@@ -102,7 +102,7 @@ export class TableComponent implements OnInit {
   orderBy(key: string): void {
     this.toggleOrderType();
     this.config.resetIcons();
-    this.data.sort((a, b) => {
+    this.renderedData.sort((a, b) => {
       if (this.config.order.orderType === 'asc'){
         this.config.setIcon('caret-up-fill', key);
         return (a[key] > b[key]) ? 1 : -1;
