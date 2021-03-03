@@ -39,6 +39,7 @@ export class MyPagination{
   itemPerPage = 5;
   itemPerPageOptions = [5, 10, 20, 50, 100, 500];
   currentPage = 0;
+  totalPageNumber: number;
 }
 
 
@@ -152,6 +153,8 @@ export class TableComponent implements OnInit {
   }
 
   nextPage(): void {
-    this.config.pagination.currentPage ++;
+    if ( (this.config.pagination.currentPage + 1) < this.config.pagination.totalPageNumber ){
+      this.config.pagination.currentPage ++;
+    }
   }
 }
