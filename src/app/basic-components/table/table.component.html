@@ -1,13 +1,13 @@
-<table>
-  <thead>
+<table class="table table-bordered">
+  <thead class="table-dark">
     <tr>
-      <th *ngFor="let head of config.headers">
+      <th *ngFor="let head of config.headers" scope="col">
         <span (click)="orderBy(head.key)">{{head.label}} {{head.icon}}</span>
         <span (click)="toggleFilter(head.key)" [ngClass]="head.searchCss">🔎</span>
       </th>
       <th>
         <label for="search"></label>
-        <input [ngModel]="config.search.text" (ngModelChange)="filtra($event)" type="text" id="search" placeholder="Filtra colonne">
+        <input [ngModel]="config.search.text" (ngModelChange)="filtra($event)" type="text" id="search" placeholder="Filtra colonne" class="form-control">
       </th>
     </tr>
   </thead>
@@ -18,19 +18,23 @@
   </tbody>
   <tfoot>
     <tr>
-      <td>
-        <span>Visualizza </span>
-        <select [(ngModel)]="config.pagination.itemPerPage" name="itemPerPage" id="itemPerPage">
-          <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
-        </select>
-        <span> elementi</span>
+      <td [colSpan]="config.headers.length + 1" >
+        <div class="horizontalAlignTd">
+          <span>Visualizza </span>
+          <select [(ngModel)]="config.pagination.itemPerPage" name="itemPerPage" id="itemPerPage" class="form-select tableNumberInput">
+            <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
+          </select>
+          <span> elementi</span>
+        </div>
       </td>
     </tr>
-    <tr>
-      <td>
-        <span (click)="previousPage()">< </span>
-        <input [(ngModel)]="config.pagination.currentPage" type="text">
-        <span (click)="nextPage()"> ></span>
+    <tr >
+      <td [colSpan]="config.headers.length + 1">
+        <div class="horizontalAlignTd">
+          <span (click)="previousPage()">< </span>
+          <input [(ngModel)]="config.pagination.currentPage" type="text" class="form-control tableNumberInput">
+          <span (click)="nextPage()"> ></span>
+        </div>
       </td>
     </tr>
   </tfoot>

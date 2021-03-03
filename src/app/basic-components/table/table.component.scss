@@ -1,6 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+
 .filterFalse{
 }
 .filterTrue{
   @extend .filterFalse;
   background-color: #919191;
+}
+
+.horizontalAlignTd{
+  display: flex;
+  justify-content: center;
+  @extend .w-100;
+}
+
+.tableNumberInput{
+  width: 83px;
 }
