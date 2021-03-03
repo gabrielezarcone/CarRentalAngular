@@ -103,11 +103,11 @@ export class TableComponent implements OnInit {
     this.config.resetIcons();
     this.data.sort((a, b) => {
       if (this.config.order.orderType === 'asc'){
-        this.config.setIcon('🔺', key);
+        this.config.setIcon('caret-up-fill', key);
         return (a[key] > b[key]) ? 1 : -1;
       }
       else {
-        this.config.setIcon('🔻', key);
+        this.config.setIcon('caret-down-fill', key);
         return (a[key] < b[key]) ? 1 : -1;
       }
     });

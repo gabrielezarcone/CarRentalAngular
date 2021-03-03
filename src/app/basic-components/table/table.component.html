@@ -2,7 +2,7 @@
   <thead class="table-dark">
     <tr>
       <th *ngFor="let head of config.headers" scope="col">
-        <span (click)="orderBy(head.key)">{{head.label}} {{head.icon}}</span>
+        <span (click)="orderBy(head.key)" class="tableHeadLabel"> {{head.label}} <i class="bi bi-{{head.icon}}"></i></span>
         <i class="bi bi-funnel-fill" (click)="toggleFilter(head.key)" [ngClass]="head.searchCss"></i>
       </th>
       <th>
