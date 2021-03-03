@@ -28,9 +28,9 @@
     </tr>
     <tr>
       <td>
-        <span>< </span>
+        <span (click)="previousPage()">< </span>
         <input [(ngModel)]="config.pagination.currentPage" type="text">
-        <span> ></span>
+        <span (click)="nextPage()"> ></span>
       </td>
     </tr>
   </tfoot>

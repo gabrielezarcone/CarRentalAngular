@@ -139,4 +139,14 @@ export class TableComponent implements OnInit {
       });
     }
   }
+
+  previousPage(): void {
+    if (this.config.pagination.currentPage !== 0){
+      this.config.pagination.currentPage --;
+    }
+  }
+
+  nextPage(): void {
+    this.config.pagination.currentPage ++;
+  }
 }
