@@ -39,6 +39,7 @@ export class MyPagination{
   itemPerPage = 5;
   itemPerPageOptions = [5, 10, 20, 50, 100, 500];
   currentPage = 0;
+  totalPageNumber: number;
 }
 
 
@@ -101,7 +102,7 @@ export class TableComponent implements OnInit {
   orderBy(key: string): void {
     this.toggleOrderType();
     this.config.resetIcons();
-    this.data.sort((a, b) => {
+    this.renderedData.sort((a, b) => {
       if (this.config.order.orderType === 'asc'){
         this.config.setIcon('caret-up-fill', key);
         return (a[key] > b[key]) ? 1 : -1;
@@ -111,6 +112,7 @@ export class TableComponent implements OnInit {
         return (a[key] < b[key]) ? 1 : -1;
       }
     });
+    this.renderedData = [...this.renderedData];
   }
 
   toggleOrderType(): void{
@@ -148,10 +150,30 @@ export class TableComponent implements OnInit {
   previousPage(): void {
     if (this.config.pagination.currentPage !== 0){
       this.config.pagination.currentPage --;
+      this.updatePaginationReference();
     }
   }
 
   nextPage(): void {
-    this.config.pagination.currentPage ++;
+    if ( (this.config.pagination.currentPage + 1) < this.config.pagination.totalPageNumber ){
+      this.config.pagination.currentPage ++;
+      this.updatePaginationReference();
+    }
+  }
+
+  updatePaginationReference(currentPage?: number, itemPerPage?: number): void {
+    if (currentPage) {
+      if (currentPage < 0){
+        this.config.pagination.currentPage = 0;
+      }
+      else if (currentPage > this.config.pagination.totalPageNumber){
+        this.config.pagination.currentPage = this.config.pagination.totalPageNumber-1;
+      }
+      else {
+        this.config.pagination.currentPage = currentPage;
+      }
+    }
+    if (itemPerPage) { this.config.pagination.itemPerPage = itemPerPage; }
+    this.config.pagination = {...this.config.pagination};
   }
 }
