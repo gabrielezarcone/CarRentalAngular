@@ -112,6 +112,7 @@ export class TableComponent implements OnInit {
         return (a[key] < b[key]) ? 1 : -1;
       }
     });
+    this.renderedData = [...this.renderedData];
   }
 
   toggleOrderType(): void{
@@ -149,12 +150,20 @@ export class TableComponent implements OnInit {
   previousPage(): void {
     if (this.config.pagination.currentPage !== 0){
       this.config.pagination.currentPage --;
+      this.updatePaginationReference();
     }
   }
 
   nextPage(): void {
     if ( (this.config.pagination.currentPage + 1) < this.config.pagination.totalPageNumber ){
       this.config.pagination.currentPage ++;
+      this.updatePaginationReference();
     }
+  }
+
+  updatePaginationReference(currentPage?: number, itemPerPage?: number): void {
+    if (currentPage) { this.config.pagination.currentPage = currentPage; }
+    if (itemPerPage) { this.config.pagination.itemPerPage = itemPerPage; }
+    this.config.pagination = {...this.config.pagination};
   }
 }

@@ -3,8 +3,7 @@ import * as _ from 'lodash';
 import {MyPagination} from './table/table.component';
 
 @Pipe({
-  name: 'paginationPipe',
-  pure: false
+  name: 'paginationPipe'
 })
 export class PaginationPipePipe implements PipeTransform {
 
