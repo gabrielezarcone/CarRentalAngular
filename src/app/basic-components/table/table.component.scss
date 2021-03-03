@@ -1,10 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
 .filterFalse{
+  cursor: pointer;
 }
 .filterTrue{
   @extend .filterFalse;
-  background-color: #919191;
+  color: $primary;
 }
 
 .horizontalAlignTd{
