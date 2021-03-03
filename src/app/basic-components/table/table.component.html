@@ -18,11 +18,20 @@
   </tbody>
   <tfoot>
     <tr>
-      <span>Visualizza </span>
-      <select [(ngModel)]="config.pagination.itemPerPage" name="itemPerPage" id="itemPerPage">
-        <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
-      </select>
-      <span> elementi</span>
+      <td>
+        <span>Visualizza </span>
+        <select [(ngModel)]="config.pagination.itemPerPage" name="itemPerPage" id="itemPerPage">
+          <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
+        </select>
+        <span> elementi</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>< </span>
+        <input [(ngModel)]="config.pagination.currentPage" type="text">
+        <span> ></span>
+      </td>
     </tr>
   </tfoot>
 </table>
