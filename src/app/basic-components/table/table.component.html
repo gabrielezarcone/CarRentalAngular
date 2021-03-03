@@ -1,0 +1,40 @@
+<table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th *ngFor="let head of config.headers" scope="col">
+        <span (click)="orderBy(head.key)" class="tableHeadLabel"> {{head.label}} <i class="bi bi-{{head.icon}}"></i></span>
+        <i class="bi bi-funnel-fill" (click)="toggleFilter(head.key)" [ngClass]="head.searchCss"></i>
+      </th>
+      <th>
+        <input [ngModel]="config.search.text" (ngModelChange)="filtra($event)" type="text" id="search" placeholder="Filtra colonne" class="form-control">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of renderedData | paginationPipe : config.pagination">
+      <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td [colSpan]="config.headers.length + 1" >
+        <div class="horizontalAlignTd">
+          <span>Visualizza </span>
+          <select [ngModel]="config.pagination.itemPerPage" (ngModelChange)="updatePaginationReference(undefined, $event)" name="itemPerPage" id="itemPerPage" class="form-select tableNumberInput">
+            <option *ngFor="let option of config.pagination.itemPerPageOptions" value="{{option}}">{{option}}</option>
+          </select>
+          <span> elementi</span>
+        </div>
+      </td>
+    </tr>
+    <tr >
+      <td [colSpan]="config.headers.length + 1">
+        <div class="horizontalAlignTd">
+          <app-my-button [buttonConfig]="prevBtn" (click)="previousPage()"></app-my-button>
+          <input [ngModel]="config.pagination.currentPage" (ngModelChange)="updatePaginationReference($event)" type="text" class="form-control tableNumberInput">
+          <app-my-button [buttonConfig]="nextBtn" (click)="nextPage()">></app-my-button>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

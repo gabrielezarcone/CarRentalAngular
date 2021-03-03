@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap";
+
+.filterFalse{
+  cursor: pointer;
+}
+.filterTrue{
+  @extend .filterFalse;
+  color: $primary;
+}
+
+.horizontalAlignTd{
+  display: flex;
+  justify-content: center;
+  @extend .w-100;
+}
+
+.tableNumberInput{
+  width: 83px;
+}
+
+.tableHeadLabel:hover{
+  cursor: pointer;
+  opacity: 70%;
+}
