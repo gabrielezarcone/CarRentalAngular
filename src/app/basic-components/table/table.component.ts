@@ -162,7 +162,17 @@ export class TableComponent implements OnInit {
   }
 
   updatePaginationReference(currentPage?: number, itemPerPage?: number): void {
-    if (currentPage) { this.config.pagination.currentPage = currentPage; }
+    if (currentPage) {
+      if (currentPage < 0){
+        this.config.pagination.currentPage = 0;
+      }
+      else if (currentPage > this.config.pagination.totalPageNumber){
+        this.config.pagination.currentPage = this.config.pagination.totalPageNumber-1;
+      }
+      else {
+        this.config.pagination.currentPage = currentPage;
+      }
+    }
     if (itemPerPage) { this.config.pagination.itemPerPage = itemPerPage; }
     this.config.pagination = {...this.config.pagination};
   }
