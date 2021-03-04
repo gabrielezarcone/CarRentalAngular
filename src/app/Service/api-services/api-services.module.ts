@@ -4,6 +4,7 @@ import {UsersService} from './users.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AutoService} from './auto.service';
 import {PrenotazioneService} from './prenotazione.service';
+import {RuoloService} from './ruolo.service';
 
 
 
@@ -12,7 +13,8 @@ import {PrenotazioneService} from './prenotazione.service';
   providers: [
     UsersService,
     AutoService,
-    PrenotazioneService
+    PrenotazioneService,
+    RuoloService
   ],
   imports: [
     CommonModule,
