@@ -47,12 +47,12 @@ module.exports = function(){
       }
     ],
     user_ruoli: _.concat([{
-      user_id: 0,
-      ruolo_id: 0
+      userId: 0,
+      ruoloId: 0
     }], _.times(100, num => {
       return {
-        user_id: num+1,
-        ruolo_id: 1
+        userId: num+1,
+        ruoloId: 1
       }
     })),
     prenotazioni: _.times(prenotazioniNumber, num => {
