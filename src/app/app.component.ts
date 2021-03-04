@@ -14,7 +14,12 @@ export class AppComponent implements OnInit{
   btnConfig: MyButtonConfig = new MyButtonConfig('hello', undefined, 'tree-fill');
   // Table --------------------------------------------------------------------------------------------------
   order: MyOrder = new MyOrder('name', 'asc');
-  headers: MyHeaders[] = [new MyHeaders('name', 'Nome'), new MyHeaders('surname', 'Cognome')];
+  headers: MyHeaders[] = [
+    new MyHeaders('username', 'Username'),
+    new MyHeaders('name', 'Nome'),
+    new MyHeaders('surname', 'Cognome'),
+    new MyHeaders('birthDate', 'Data di nascita'),
+    new MyHeaders('deleted', 'Disattivo')];
   tableConfig: TableConfig = new TableConfig(this.headers, this.order);
   tableData: any[];
   // --------------------------------------------------------------------------------------------------
