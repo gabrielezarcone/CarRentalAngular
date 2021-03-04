@@ -21,6 +21,16 @@ module.exports = function(){
         username: faker.internet.userName(),
         password: faker.internet.password()
       }
-    }))
+    })),
+    auto: _.times(50, num => {
+      return {
+        id: num,
+        costruttore: faker.vehicle.manufacturer(),
+        modello: faker.vehicle.model(),
+        immatricolazione: faker.date.past(),
+        targa: faker.vehicle.vrm(),
+        tipologia: faker.vehicle.type()
+      }
+    })
   }
 }
