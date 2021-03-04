@@ -2,6 +2,10 @@ module.exports = function(){
   var faker = require("faker");
   var _ = require("lodash");
 
+  const usersNumber = 100;
+  const autoNumber = 50;
+  const prenotazioniNumber = 50;
+
   return {
     users: _.concat([{
       id: 0,
@@ -11,7 +15,7 @@ module.exports = function(){
       deleted: false,
       username: 'admin',
       password: 'admin'
-    }], _.times(100, num => {
+    }], _.times(usersNumber, num => {
       return {
         id: num+1,
         name: faker.name.firstName(),
@@ -22,7 +26,7 @@ module.exports = function(){
         password: faker.internet.password()
       }
     })),
-    auto: _.times(50, num => {
+    auto: _.times(autoNumber, num => {
       return {
         id: num,
         costruttore: faker.vehicle.manufacturer(),
@@ -50,6 +54,16 @@ module.exports = function(){
         user_id: num+1,
         ruolo_id: 1
       }
-    }))
+    })),
+    prenotazioni: _.times(prenotazioniNumber, num => {
+      return {
+        id: num,
+        inizio: faker.date.future(),
+        fine: faker.date.future(),
+        stato: faker.random.arrayElement(['RIFIUTATO','PENDING','APPROVATO']),
+        user: _.random(0,usersNumber),
+        auto: _.random(0,autoNumber)
+      }
+    })
   }
 }
