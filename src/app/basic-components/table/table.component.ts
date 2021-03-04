@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import * as _ from 'lodash';
 import {MyButtonConfig} from '../my-button/my-button.component';
 
@@ -84,7 +84,7 @@ export class MyHeaders{
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnChanges {
   @Input() config: TableConfig;
   @Input() data: any[];
   renderedData: any[];
@@ -95,7 +95,7 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.renderedData = this.data;
   }
 
