@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AutoService} from './auto.service';
 import {PrenotazioneService} from './prenotazione.service';
 import {RuoloService} from './ruolo.service';
+import {UserRuoliService} from './user-ruoli.service';
 
 
 
@@ -14,7 +15,8 @@ import {RuoloService} from './ruolo.service';
     UsersService,
     AutoService,
     PrenotazioneService,
-    RuoloService
+    RuoloService,
+    UserRuoliService
   ],
   imports: [
     CommonModule,
