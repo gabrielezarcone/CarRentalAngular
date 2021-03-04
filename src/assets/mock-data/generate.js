@@ -31,6 +31,25 @@ module.exports = function(){
         targa: faker.vehicle.vrm(),
         tipologia: faker.vehicle.type()
       }
-    })
+    }),
+    ruolo:[
+      {
+        id: 0,
+        ruolo: 'ROLE_ADMIN'
+      },
+      {
+        id: 1,
+        ruolo: 'ROLE_CUSTOMER'
+      }
+    ],
+    user_ruoli: _.concat([{
+      user_id: 0,
+      ruolo_id: 0
+    }], _.times(100, num => {
+      return {
+        user_id: num+1,
+        ruolo_id: 1
+      }
+    }))
   }
 }
