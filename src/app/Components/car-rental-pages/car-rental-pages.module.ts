@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import {BasicComponentsModule} from '../../basic-components/basic-components.module';
 import {ApiServicesModule} from '../../Service/api-services/api-services.module';
+import { ModificaUserComponent } from './modifica-user/modifica-user.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [HomeAdminComponent],
+  declarations: [HomeAdminComponent, ModificaUserComponent],
   exports: [
     HomeAdminComponent
   ],
   imports: [
     CommonModule,
     ApiServicesModule,
-    BasicComponentsModule
+    BasicComponentsModule,
+    ReactiveFormsModule
   ]
 })
 export class CarRentalPagesModule { }
