@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MyButtonConfig} from '../my-button/my-button.component';
 
 @Component({
@@ -7,10 +7,7 @@ import {MyButtonConfig} from '../my-button/my-button.component';
   styleUrls: ['./crud-buttons.component.scss']
 })
 export class CrudButtonsComponent implements OnInit {
-  btns: MyButtonConfig[] = [
-    new MyButtonConfig('Modifica', 'btn-success', 'arrow-left-right'),
-    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon')
-  ];
+  @Input() btns: MyButtonConfig[];
 
   constructor() { }
 
