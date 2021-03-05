@@ -13,7 +13,7 @@
   <tbody>
     <tr *ngFor="let obj of renderedData | paginationPipe : config.pagination">
       <td *ngFor="let head of config.headers">{{obj[head.key]}}</td>
-      <td><app-crud-buttons></app-crud-buttons></td>
+      <td><app-crud-buttons [btns]="crudBtns"></app-crud-buttons></td>
     </tr>
   </tbody>
   <tfoot>

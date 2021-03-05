@@ -92,6 +92,8 @@ export class TableComponent implements OnChanges {
   prevBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-left-circle' );
   nextBtn = new MyButtonConfig(undefined, 'btn-secondary', 'arrow-right-circle' );
   // -------------------------------
+  @Input() crudBtns: MyButtonConfig[];
+  // -------------------------------
 
   constructor() { }
 
