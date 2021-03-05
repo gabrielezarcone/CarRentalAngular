@@ -1,0 +1,6 @@
+@import "~bootstrap";
+
+.crudBtnGroup{
+  @extend .btn-group;
+  @extend .w-100;
+}
