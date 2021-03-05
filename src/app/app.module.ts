@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import {BasicComponentsModule} from './basic-components/basic-components.module';
 import {ApiServicesModule} from './Service/api-services/api-services.module';
+import {CarRentalPagesModule} from './Components/car-rental-pages/car-rental-pages.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {ApiServicesModule} from './Service/api-services/api-services.module';
   imports: [
     BrowserModule,
     BasicComponentsModule,
-    ApiServicesModule
+    ApiServicesModule,
+    CarRentalPagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
