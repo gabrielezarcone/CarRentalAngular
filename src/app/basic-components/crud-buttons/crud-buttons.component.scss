@@ -3,4 +3,9 @@
 .crudBtnGroup{
   @extend .btn-group;
   @extend .w-100;
+  justify-content: center;
+
+  app-my-button{
+    flex-grow: 1;
+  }
 }
