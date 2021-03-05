@@ -1,1 +1,20 @@
-<p>modifica-user works!</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label>
+    Username:
+    <input type="text" formControlName="username">
+  </label>
+  <label>
+    Nome:
+    <input type="text" formControlName="name">
+  </label>
+  <label>
+    Cognome:
+    <input type="text" formControlName="surname">
+  </label>
+  <label>
+    Data di nascita:
+    <input type="text" formControlName="birthDate">
+  </label>
+
+  <button type="submit" [disabled]="!userForm.valid">Salva</button>
+</form>

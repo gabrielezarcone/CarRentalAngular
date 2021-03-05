@@ -23,4 +23,7 @@ export class ModificaUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void {
+    console.warn(this.userForm.value);
+  }
 }
