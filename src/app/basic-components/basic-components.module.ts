@@ -17,7 +17,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   ],
   exports: [
     MyButtonComponent,
-    TableComponent
+    TableComponent,
+    NavBarComponent
   ]
 })
 export class BasicComponentsModule { }
