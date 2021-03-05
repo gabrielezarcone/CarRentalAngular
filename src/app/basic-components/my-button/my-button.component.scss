@@ -1,0 +1,6 @@
+@import "~bootstrap";
+
+.myBtn{
+  @extend .btn;
+  width: 100%;
+}
