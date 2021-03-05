@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NavBarElement} from './ConfigClasses/NavBarElement';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+
+  @Input() navElements: NavBarElement[];
+  @Input() title: string;
 
   constructor() { }
 
