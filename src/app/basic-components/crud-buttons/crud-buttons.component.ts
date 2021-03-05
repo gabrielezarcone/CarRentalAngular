@@ -7,8 +7,10 @@ import {MyButtonConfig} from '../my-button/my-button.component';
   styleUrls: ['./crud-buttons.component.scss']
 })
 export class CrudButtonsComponent implements OnInit {
-  btnModifica: MyButtonConfig = new MyButtonConfig('Modifica', 'btn-success', 'arrow-left-right');
-  btnElimina: MyButtonConfig = new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon');
+  btns: MyButtonConfig[] = [
+    new MyButtonConfig('Modifica', 'btn-success', 'arrow-left-right'),
+    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon')
+  ];
 
   constructor() { }
 

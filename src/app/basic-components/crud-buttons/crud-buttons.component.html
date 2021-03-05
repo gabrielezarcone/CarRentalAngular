@@ -1,4 +1,3 @@
 <div class="crudBtnGroup" role="group" aria-label="Basic example">
-  <app-my-button [buttonConfig]="btnModifica"></app-my-button>
-  <app-my-button [buttonConfig]="btnElimina"></app-my-button>
+  <app-my-button *ngFor="let btnConfig of btns" [buttonConfig]="btnConfig"></app-my-button>
 </div>
