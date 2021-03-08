@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {User} from '../../../Model/User';
 
 @Component({
   selector: 'app-modifica-user',
@@ -8,17 +9,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ModificaUserComponent implements OnInit {
 
-  userForm = new  FormGroup({
-    id: new FormControl(''),
-    username: new FormControl(''),
-    name: new FormControl(''),
-    surname: new FormControl(''),
-    birthDate: new FormControl(''),
-    deleted: new FormControl(''),
-    password: new FormControl(''),
-  });
+  user = new User(0, 'prova', '', undefined, false, '', '');
+  userForm = this.fb.group(this.user);
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
