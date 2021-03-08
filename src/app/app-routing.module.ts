@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeAdminComponent} from './Components/car-rental-pages/home-admin/home-admin.component';
+import {ModificaUserComponent} from './Components/car-rental-pages/modifica-user/modifica-user.component';
 
-
+const routes: Routes = [
+  {path: 'homeAdmin', component: HomeAdminComponent},
+  {path: 'modifica/user', component: ModificaUserComponent}
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class AppRoutingModule { }
