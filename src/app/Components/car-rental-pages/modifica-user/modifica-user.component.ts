@@ -25,7 +25,10 @@ export class ModificaUserComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.warn(this.userForm.value);
+    this.userService.update(this.id, this.userForm.value).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
   }
 
   getUser(): void{
