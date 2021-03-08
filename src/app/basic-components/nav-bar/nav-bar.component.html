@@ -8,7 +8,7 @@
     <!-- Elementi navbar __________________-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="navbar-nav">
-        <a *ngFor="let elem of navElements" class="nav-link" href="{{elem.href}}">{{elem.label}}</a>
+        <a *ngFor="let elem of navElements" class="nav-link" routerLink="{{elem.href}}">{{elem.label}}</a>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {BasicComponentsModule} from './basic-components/basic-components.module';
 import {ApiServicesModule} from './Service/api-services/api-services.module';
 import {CarRentalPagesModule} from './Components/car-rental-pages/car-rental-pages.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {CarRentalPagesModule} from './Components/car-rental-pages/car-rental-pag
     BrowserModule,
     BasicComponentsModule,
     ApiServicesModule,
-    CarRentalPagesModule
+    CarRentalPagesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
