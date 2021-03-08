@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {User} from '../../../Model/User';
+import {ActivatedRoute} from '@angular/router';
+import {UsersService} from '../../../Service/api-services/users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-modifica-user',
@@ -8,22 +12,31 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ModificaUserComponent implements OnInit {
 
-  userForm = new  FormGroup({
-    id: new FormControl(''),
-    username: new FormControl(''),
-    name: new FormControl(''),
-    surname: new FormControl(''),
-    birthDate: new FormControl(''),
-    deleted: new FormControl(''),
-    password: new FormControl(''),
-  });
+  userForm = this.fb.group(new User());
+  id = +this.route.snapshot.paramMap.get('id');
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private location: Location,
+    private userService: UsersService
+  ) { }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
   onSubmit(): void {
-    console.warn(this.userForm.value);
+    this.userService.update(this.id, this.userForm.value).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
+    this.location.back();
+  }
+
+  getUser(): void{
+    this.userService.get(this.id).subscribe(
+      user => this.userForm.setValue(user)
+    );
   }
 }
