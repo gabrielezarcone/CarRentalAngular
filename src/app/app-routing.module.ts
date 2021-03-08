@@ -5,7 +5,7 @@ import {ModificaUserComponent} from './Components/car-rental-pages/modifica-user
 
 const routes: Routes = [
   {path: 'homeAdmin', component: HomeAdminComponent},
-  {path: 'modifica/user', component: ModificaUserComponent}
+  {path: 'modifica/user/:id', component: ModificaUserComponent}
 ];
 
 @NgModule({
