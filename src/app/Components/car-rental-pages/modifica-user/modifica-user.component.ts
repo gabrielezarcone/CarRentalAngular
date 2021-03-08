@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {User} from '../../../Model/User';
 import {ActivatedRoute} from '@angular/router';
 import {UsersService} from '../../../Service/api-services/users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-modifica-user',
@@ -17,6 +18,7 @@ export class ModificaUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private location: Location,
     private userService: UsersService
   ) { }
 
@@ -29,6 +31,7 @@ export class ModificaUserComponent implements OnInit {
       data => console.log(data),
       error => console.error(error)
     );
+    this.location.back();
   }
 
   getUser(): void{
