@@ -4,7 +4,7 @@ module.exports = function(){
 
   const usersNumber = 100;
   const autoNumber = 50;
-  const prenotazioniNumber = 50;
+  const prenotazioniNumber = 200;
 
   return {
     users: _.concat([{
