@@ -26,7 +26,7 @@ export class HomeAdminComponent implements OnInit {
   tableData: User[];
   tableCrudBtns: MyButtonConfig[] = [
     new MyButtonConfig('Modifica', 'btn-success', 'arrow-clockwise', '/modifica/user/'), // l'id viene aggiunto da component CrudButtons
-    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon'),
+    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon', '/elimina/user/'),
     new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list')
   ];
   // ****************************************** Tabella
