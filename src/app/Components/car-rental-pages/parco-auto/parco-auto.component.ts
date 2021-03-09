@@ -23,7 +23,11 @@ export class ParcoAutoComponent implements OnInit {
   // ------------------------------
   tableConfig = new TableConfig(this.headers, this.order);
   tableData: Auto[];
-  tableCrudBtns: MyButtonConfig[] = [];
+  tableCrudBtns: MyButtonConfig[] = [
+    new MyButtonConfig('Modifica', 'btn-success', 'pen', (auto) => '/modifica/auto/' + auto.id),
+    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon', (auto) => '/elimina/auto/' + auto.id),
+    new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
+  ];
   // ****************************************** Tabella
 
   constructor(private autoService: AutoService) { }
