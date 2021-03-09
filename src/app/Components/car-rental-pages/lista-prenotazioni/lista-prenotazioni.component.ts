@@ -21,7 +21,10 @@ export class ListaPrenotazioniComponent implements OnInit {
     new MyHeaders('auto', 'Auto')
   ];
   private order = new MyOrder('inizio', 'asc');
-  crudBtns: MyButtonConfig[] = [];
+  crudBtns: MyButtonConfig[] = [
+    new MyButtonConfig('Approva', 'btn-primary', 'check2'),
+    new MyButtonConfig('Rifiuta', 'btn-dark', 'trash')
+  ];
   tableConfig = new TableConfig(this.headers, this.order);
   // ****************************************** Tabella
 
