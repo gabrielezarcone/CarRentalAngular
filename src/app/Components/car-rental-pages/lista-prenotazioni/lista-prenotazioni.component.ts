@@ -22,8 +22,20 @@ export class ListaPrenotazioniComponent implements OnInit {
   ];
   private order = new MyOrder('inizio', 'asc');
   crudBtns: MyButtonConfig[] = [
-    new MyButtonConfig('Approva', 'btn-primary', 'check2', undefined, undefined, (row: any) => this.condizioneVisibilita(row)),
-    new MyButtonConfig('Rifiuta', 'btn-dark', 'trash', undefined, undefined, (row: any) => this.condizioneVisibilita(row))
+    new MyButtonConfig(
+      'Approva',
+      'btn-primary',
+      'check2',
+      undefined,
+      (row) => this.approvaPrenotazione(row),
+      (row: any) => this.condizioneVisibilita(row)),
+    new MyButtonConfig(
+      'Rifiuta',
+      'btn-dark',
+      'trash',
+      undefined,
+      undefined,
+      (row: any) => this.condizioneVisibilita(row))
   ];
   tableConfig = new TableConfig(this.headers, this.order);
   // ****************************************** Tabella
@@ -41,6 +53,18 @@ export class ListaPrenotazioniComponent implements OnInit {
 
   condizioneVisibilita(row: any): boolean{
     return row.stato === 'PENDING';
+  }
+
+  approvaPrenotazione(prenotazione: Prenotazione): void{
+    this.cambiaStato(prenotazione, 'APPROVATO');
+  }
+
+  cambiaStato(prenotazione: Prenotazione, stato: string): void{
+    prenotazione.stato = stato;
+    this.prenotazioneService.update(prenotazione.id, prenotazione).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
   }
 
 }
