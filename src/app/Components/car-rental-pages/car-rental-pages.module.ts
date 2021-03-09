@@ -7,11 +7,12 @@ import { ModificaUserComponent } from './modifica-user/modifica-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EliminaUserComponent } from './elimina-user/elimina-user.component';
 import {AppRoutingModule} from '../../app-routing.module';
+import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
 
 
 
 @NgModule({
-  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent],
+  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent, ListaPrenotazioniComponent],
   exports: [
     HomeAdminComponent,
     ModificaUserComponent
