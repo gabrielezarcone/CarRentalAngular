@@ -5,11 +5,12 @@ import {BasicComponentsModule} from '../../basic-components/basic-components.mod
 import {ApiServicesModule} from '../../Service/api-services/api-services.module';
 import { ModificaUserComponent } from './modifica-user/modifica-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { EliminaUserComponent } from './elimina-user/elimina-user.component';
 
 
 
 @NgModule({
-  declarations: [HomeAdminComponent, ModificaUserComponent],
+  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent],
   exports: [
     HomeAdminComponent,
     ModificaUserComponent
