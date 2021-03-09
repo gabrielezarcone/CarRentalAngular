@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {MyHeaders, MyOrder, TableConfig} from '../../../basic-components/table/table.component';
+import {MyButtonConfig} from '../../../basic-components/my-button/my-button.component';
+import {AutoService} from '../../../Service/api-services/auto.service';
+import {Auto} from '../../../Model/Auto';
 
 @Component({
   selector: 'app-parco-auto',
@@ -6,10 +10,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parco-auto.component.scss']
 })
 export class ParcoAutoComponent implements OnInit {
+  // Tabella ******************************************
+  headers: MyHeaders[] = [
+    new MyHeaders('costruttore', 'Costruttore'),
+    new MyHeaders('modello', 'Modello'),
+    new MyHeaders('immatricolazione', 'Immatricolazione'),
+    new MyHeaders('targa', 'Targa'),
+    new MyHeaders('tipologia', 'Tipologia')
+  ];
+  // ------------------------------
+  order: MyOrder = new MyOrder('username', 'asc');
+  // ------------------------------
+  tableConfig = new TableConfig(this.headers, this.order);
+  tableData: Auto[];
+  tableCrudBtns: MyButtonConfig[] = [];
+  // ****************************************** Tabella
 
-  constructor() { }
+  constructor(private autoService: AutoService) { }
 
   ngOnInit(): void {
+    this.autoService.getAll().subscribe(
+      data => this.tableData = data
+    );
   }
 
 }
