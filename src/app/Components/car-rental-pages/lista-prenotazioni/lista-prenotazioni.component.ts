@@ -22,8 +22,8 @@ export class ListaPrenotazioniComponent implements OnInit {
   ];
   private order = new MyOrder('inizio', 'asc');
   crudBtns: MyButtonConfig[] = [
-    new MyButtonConfig('Approva', 'btn-primary', 'check2'),
-    new MyButtonConfig('Rifiuta', 'btn-dark', 'trash')
+    new MyButtonConfig('Approva', 'btn-primary', 'check2', undefined, undefined, (row: any) => this.condizioneVisibilita(row)),
+    new MyButtonConfig('Rifiuta', 'btn-dark', 'trash', undefined, undefined, (row: any) => this.condizioneVisibilita(row))
   ];
   tableConfig = new TableConfig(this.headers, this.order);
   // ****************************************** Tabella
@@ -37,6 +37,10 @@ export class ListaPrenotazioniComponent implements OnInit {
     this.prenotazioneService.getByUser(this.id).subscribe(
       data => this.prenotazioniUtente = data
     );
+  }
+
+  condizioneVisibilita(row: any): boolean{
+    return row.stato === 'PENDING';
   }
 
 }

@@ -6,13 +6,15 @@ export class MyButtonConfig {
   icon: string; // nome dell'icona di bootstrap icon. Per esempio icon=alarm equivale a <i class="bi-alarm"></i>
   routerLink?: string;
   click: () => void;
+  visible?: (row) => boolean;
 
-  constructor(text?: string, cssClass?: string, icon?: string, routerLink?: string, click?: () => void) {
+  constructor(text?: string, cssClass?: string, icon?: string, routerLink?: string, click?: () => void, visible?: (row) => boolean) {
     if (text) {this.text = text; }
     if (cssClass) { this.customCssClass = cssClass; }
     if (icon) { this.icon = icon; }
     if (routerLink) { this.routerLink = routerLink; }
     if (click) { this.click = click; }
+    if (visible) { this.visible = visible; }
   }
 
 }
