@@ -1,6 +1,7 @@
 <div class="crudBtnGroup" role="group" aria-label="Basic example">
   <ng-container *ngFor="let btnConfig of btns">
-    <app-my-button *ngIf="!btnConfig.visible || btnConfig.visible(item)" [buttonConfig]="btnConfig" (click)="btnConfig.click(item)"></app-my-button>
+    <app-my-button *ngIf="!btnConfig.routerLink && (!btnConfig.visible || btnConfig.visible(item))" [buttonConfig]="btnConfig" (click)="btnConfig.click(item)"></app-my-button>
+    <app-my-button *ngIf="btnConfig.routerLink && (!btnConfig.visible || btnConfig.visible(item))" [buttonConfig]="btnConfig" routerLink="{{btnConfig.routerLink(item)}}"></app-my-button>
   </ng-container>
 
 </div>
