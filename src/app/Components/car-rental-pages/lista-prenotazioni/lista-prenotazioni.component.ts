@@ -21,7 +21,22 @@ export class ListaPrenotazioniComponent implements OnInit {
     new MyHeaders('auto', 'Auto')
   ];
   private order = new MyOrder('inizio', 'asc');
-  crudBtns: MyButtonConfig[] = [];
+  crudBtns: MyButtonConfig[] = [
+    new MyButtonConfig(
+      'Approva',
+      'btn-primary',
+      'check2',
+      undefined,
+      (row) => this.approvaPrenotazione(row),
+      (row: any) => this.condizioneVisibilita(row)),
+    new MyButtonConfig(
+      'Rifiuta',
+      'btn-dark',
+      'trash',
+      undefined,
+      (row) => this.rifiutaPrenotazione(row),
+      (row: any) => this.condizioneVisibilita(row))
+  ];
   tableConfig = new TableConfig(this.headers, this.order);
   // ****************************************** Tabella
 
@@ -33,6 +48,24 @@ export class ListaPrenotazioniComponent implements OnInit {
   ngOnInit(): void {
     this.prenotazioneService.getByUser(this.id).subscribe(
       data => this.prenotazioniUtente = data
+    );
+  }
+
+  condizioneVisibilita(row: any): boolean{
+    return row.stato === 'PENDING';
+  }
+
+  approvaPrenotazione(prenotazione: Prenotazione): void{
+    this.cambiaStato(prenotazione, 'APPROVATO');
+  }
+  rifiutaPrenotazione(prenotazione: Prenotazione): void{
+    this.cambiaStato(prenotazione, 'RIFIUTATO');
+  }
+  cambiaStato(prenotazione: Prenotazione, stato: string): void{
+    prenotazione.stato = stato;
+    this.prenotazioneService.update(prenotazione.id, prenotazione).subscribe(
+      data => console.log(data),
+      error => console.error(error)
     );
   }
 
