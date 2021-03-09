@@ -8,11 +8,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { EliminaUserComponent } from './elimina-user/elimina-user.component';
 import {AppRoutingModule} from '../../app-routing.module';
 import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
+import { ParcoAutoComponent } from './parco-auto/parco-auto.component';
 
 
 
 @NgModule({
-  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent, ListaPrenotazioniComponent],
+  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent, ListaPrenotazioniComponent, ParcoAutoComponent],
   exports: [
     HomeAdminComponent,
     ModificaUserComponent
