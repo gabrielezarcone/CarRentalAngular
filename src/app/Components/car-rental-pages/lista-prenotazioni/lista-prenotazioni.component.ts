@@ -34,7 +34,7 @@ export class ListaPrenotazioniComponent implements OnInit {
       'btn-dark',
       'trash',
       undefined,
-      undefined,
+      (row) => this.rifiutaPrenotazione(row),
       (row: any) => this.condizioneVisibilita(row))
   ];
   tableConfig = new TableConfig(this.headers, this.order);
@@ -58,7 +58,9 @@ export class ListaPrenotazioniComponent implements OnInit {
   approvaPrenotazione(prenotazione: Prenotazione): void{
     this.cambiaStato(prenotazione, 'APPROVATO');
   }
-
+  rifiutaPrenotazione(prenotazione: Prenotazione): void{
+    this.cambiaStato(prenotazione, 'RIFIUTATO');
+  }
   cambiaStato(prenotazione: Prenotazione, stato: string): void{
     prenotazione.stato = stato;
     this.prenotazioneService.update(prenotazione.id, prenotazione).subscribe(
