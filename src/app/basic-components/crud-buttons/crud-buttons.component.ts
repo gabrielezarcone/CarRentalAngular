@@ -15,14 +15,5 @@ export class CrudButtonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.btns = _.cloneDeep(this.btns);
-    this.addRouterId();
-  }
-
-  addRouterId(): void{
-    for (const button of this.btns){
-      if (this.item.id !== undefined){
-        button.routerLink += this.item.id;
-      }
-    }
   }
 }
