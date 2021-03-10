@@ -94,6 +94,8 @@ export class TableComponent implements OnChanges {
   // -------------------------------
   @Input() crudBtns: MyButtonConfig[];
   // -------------------------------
+  @Input() aggiungiItem = false; // Indica se la tabella deve presentare un tasto per aggiungere un nuovo elemento
+  // -------------------------------
 
   constructor() { }
 
