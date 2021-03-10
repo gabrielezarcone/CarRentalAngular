@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaPrenotazioniAutoComponent implements OnInit {
 
+  tipoListaPrenotazioni = 'auto';
+
   constructor() { }
 
   ngOnInit(): void {

@@ -7,6 +7,7 @@ import {ListaPrenotazioniComponent} from './Components/car-rental-pages/lista-pr
 import {ParcoAutoComponent} from './Components/car-rental-pages/parco-auto/parco-auto.component';
 import {ModificaAutoComponent} from './Components/car-rental-pages/modifica-auto/modifica-auto.component';
 import {EliminaAutoComponent} from './Components/car-rental-pages/elimina-auto/elimina-auto.component';
+import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 
 const routes: Routes = [
   {path: 'homeAdmin', component: HomeAdminComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'prenotazioni/user/:id', component: ListaPrenotazioniComponent},
   {path: 'auto', component: ParcoAutoComponent},
   {path: 'modifica/auto/:id', component: ModificaAutoComponent},
-  {path: 'elimina/auto/:id', component: EliminaAutoComponent}
+  {path: 'elimina/auto/:id', component: EliminaAutoComponent},
+  {path: 'prenotazioni/auto/:id', component: ListaPrenotazioniAutoComponent},
 ];
 
 @NgModule({
