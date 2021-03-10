@@ -11,6 +11,7 @@ import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazi
 import { ParcoAutoComponent } from './parco-auto/parco-auto.component';
 import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
 import { EliminaAutoComponent } from './elimina-auto/elimina-auto.component';
+import { ListaPrenotazioniAutoComponent } from './lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 
 
 
@@ -22,7 +23,8 @@ import { EliminaAutoComponent } from './elimina-auto/elimina-auto.component';
     ListaPrenotazioniComponent,
     ParcoAutoComponent,
     ModificaAutoComponent,
-    EliminaAutoComponent
+    EliminaAutoComponent,
+    ListaPrenotazioniAutoComponent
   ],
   exports: [
     HomeAdminComponent,
