@@ -30,6 +30,7 @@ export class HomeAdminComponent implements OnInit {
     new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list', (user) => '/prenotazioni/user/' + user.id)
   ];
   // ****************************************** Tabella
+  aggiungi = {icon: 'person-plus'};
 
   constructor(private userService: UsersService) { }
 
