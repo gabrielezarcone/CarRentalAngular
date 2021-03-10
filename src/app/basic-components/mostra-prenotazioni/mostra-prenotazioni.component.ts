@@ -11,16 +11,11 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./mostra-prenotazioni.component.scss']
 })
 export class MostraPrenotazioniComponent implements OnInit {
-  @Input() tipo = ''; // Valori possibili: user|auto. Viene indicato se devo mostrare le prenotazioni in base all'utente o all'auto
+  @Input() tipo; // Valori possibili: user|auto. Viene indicato se devo mostrare le prenotazioni in base all'utente o all'auto
   prenotazioni: Prenotazione[];
   id = +this.route.snapshot.paramMap.get('id');
   // Tabella ******************************************
-  private headers: MyHeaders[] = [
-    new MyHeaders('inizio', 'Inizio'),
-    new MyHeaders('fine', 'Fine'),
-    new MyHeaders('stato', 'Stato'),
-    new MyHeaders(this.tipo === 'auto' ? 'user' : 'auto', this.tipo === 'auto' ? 'Utente' : 'Auto')
-  ];
+  private headers: MyHeaders[]; // Definiti da ngOnInit poichè usano this.tipo
   private order = new MyOrder('inizio', 'asc');
   crudBtns: MyButtonConfig[] = [
     new MyButtonConfig(
@@ -38,7 +33,7 @@ export class MostraPrenotazioniComponent implements OnInit {
       (row) => this.rifiutaPrenotazione(row),
       (row: any) => this.condizioneVisibilita(row))
   ];
-  tableConfig = new TableConfig(this.headers, this.order);
+  tableConfig: TableConfig;
   // ****************************************** Tabella
 
   constructor(
@@ -47,6 +42,15 @@ export class MostraPrenotazioniComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Imposta headers in base al tipo ------------------
+    this.headers = [
+      new MyHeaders('inizio', 'Inizio'),
+      new MyHeaders('fine', 'Fine'),
+      new MyHeaders('stato', 'Stato'),
+      new MyHeaders(this.tipo === 'auto' ? 'user' : 'auto', this.tipo === 'auto' ? 'Utente' : 'Auto')
+    ];
+    this.tableConfig = new TableConfig(this.headers, this.order);
+    // Recupera le prenotazioni in base al tipo ---------------
     if (this.tipo === 'user'){
       this.prenotazioneService.getByUser(this.id).subscribe(
         data => this.prenotazioni = data
