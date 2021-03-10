@@ -5,13 +5,15 @@ import {ModificaUserComponent} from './Components/car-rental-pages/modifica-user
 import {EliminaUserComponent} from './Components/car-rental-pages/elimina-user/elimina-user.component';
 import {ListaPrenotazioniComponent} from './Components/car-rental-pages/lista-prenotazioni/lista-prenotazioni.component';
 import {ParcoAutoComponent} from './Components/car-rental-pages/parco-auto/parco-auto.component';
+import {ModificaAutoComponent} from './Components/car-rental-pages/modifica-auto/modifica-auto.component';
 
 const routes: Routes = [
   {path: 'homeAdmin', component: HomeAdminComponent},
   {path: 'modifica/user/:id', component: ModificaUserComponent},
   {path: 'elimina/user/:id', component: EliminaUserComponent},
   {path: 'prenotazioni/user/:id', component: ListaPrenotazioniComponent},
-  {path: 'auto', component: ParcoAutoComponent}
+  {path: 'auto', component: ParcoAutoComponent},
+  {path: 'modifica/auto/:id', component: ModificaAutoComponent}
 ];
 
 @NgModule({
