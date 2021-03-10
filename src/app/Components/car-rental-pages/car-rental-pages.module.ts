@@ -9,11 +9,19 @@ import { EliminaUserComponent } from './elimina-user/elimina-user.component';
 import {AppRoutingModule} from '../../app-routing.module';
 import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
 import { ParcoAutoComponent } from './parco-auto/parco-auto.component';
+import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
 
 
 
 @NgModule({
-  declarations: [HomeAdminComponent, ModificaUserComponent, EliminaUserComponent, ListaPrenotazioniComponent, ParcoAutoComponent],
+  declarations: [
+    HomeAdminComponent,
+    ModificaUserComponent,
+    EliminaUserComponent,
+    ListaPrenotazioniComponent,
+    ParcoAutoComponent,
+    ModificaAutoComponent
+  ],
   exports: [
     HomeAdminComponent,
     ModificaUserComponent
