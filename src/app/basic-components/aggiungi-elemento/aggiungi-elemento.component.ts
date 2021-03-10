@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AggiungiBtnConfig} from './Config Classes/AggiungiBtnConfig';
 
 @Component({
   selector: 'app-aggiungi-elemento',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aggiungi-elemento.component.scss']
 })
 export class AggiungiElementoComponent implements OnInit {
+  @Input() config: AggiungiBtnConfig;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  aggiungiItem(): void {
+    console.log('aggiunge item');
+  }
 }
