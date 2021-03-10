@@ -1,0 +1,10 @@
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="bootstrapForms">
+    <div *ngFor="let field of fields" class="mb-3">
+      <label>
+        {{field.label}}
+        <input formControlName="{{field.key}}" type="{{field.type}}">
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="!form.valid">Salva</button>
+  </form>

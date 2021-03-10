@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
   appTitle = 'CarRental';
   navElements: NavBarElement[] = [
     new NavBarElement('Home', '/homeAdmin'),
-    new NavBarElement('Auto', '#'),
+    new NavBarElement('Auto', '/auto'),
     new NavBarElement('Profilo', '#')
   ];
   constructor(){}

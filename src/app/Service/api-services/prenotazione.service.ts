@@ -14,4 +14,8 @@ export class PrenotazioneService extends AbstractApiService<Prenotazione>{
   getByUser(id: number): Observable<Prenotazione[]> {
     return this.http.get<any>(this.baseUrl + '?user=' + id);
   }
+
+  getByAuto(id: number): Observable<Prenotazione[]> {
+    return this.http.get<any>(this.baseUrl + '?auto=' + id);
+  }
 }

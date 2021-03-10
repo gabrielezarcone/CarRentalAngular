@@ -4,6 +4,7 @@ import {User} from '../../../Model/User';
 import {ActivatedRoute} from '@angular/router';
 import {UsersService} from '../../../Service/api-services/users.service';
 import { Location } from '@angular/common';
+import {FormField} from '../../../basic-components/form-modifica/Config Classes/FormField';
 
 @Component({
   selector: 'app-modifica-user',
@@ -12,8 +13,13 @@ import { Location } from '@angular/common';
 })
 export class ModificaUserComponent implements OnInit {
 
-  userForm = this.fb.group(new User());
+  user: User;
   id = +this.route.snapshot.paramMap.get('id');
+  formFields = [
+    new FormField('username', 'Username', 'text'),
+    new FormField('name', 'Nome', 'text'),
+    new FormField('surname', 'Cognome', 'text')
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -26,8 +32,8 @@ export class ModificaUserComponent implements OnInit {
     this.getUser();
   }
 
-  onSubmit(): void {
-    this.userService.update(this.id, this.userForm.value).subscribe(
+  onSubmit(userUpdated: User): void {
+    this.userService.update(this.id, userUpdated).subscribe(
       data => console.log(data),
       error => console.error(error)
     );
@@ -36,7 +42,7 @@ export class ModificaUserComponent implements OnInit {
 
   getUser(): void{
     this.userService.get(this.id).subscribe(
-      user => this.userForm.setValue(user)
+      user => this.user = user
     );
   }
 }
