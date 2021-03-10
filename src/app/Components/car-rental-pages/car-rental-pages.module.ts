@@ -10,6 +10,7 @@ import {AppRoutingModule} from '../../app-routing.module';
 import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
 import { ParcoAutoComponent } from './parco-auto/parco-auto.component';
 import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
+import { EliminaAutoComponent } from './elimina-auto/elimina-auto.component';
 
 
 
@@ -20,7 +21,8 @@ import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
     EliminaUserComponent,
     ListaPrenotazioniComponent,
     ParcoAutoComponent,
-    ModificaAutoComponent
+    ModificaAutoComponent,
+    EliminaAutoComponent
   ],
   exports: [
     HomeAdminComponent,
