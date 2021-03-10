@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {ModalConfig} from './Config Classes/ModalConfig';
 import {Modal} from 'bootstrap';
 
@@ -9,6 +9,8 @@ import {Modal} from 'bootstrap';
 })
 export class ModalConfermaComponent implements OnChanges{
   @Input() modal: ModalConfig;
+  @Output() confermato = new EventEmitter<any>();
+  @Output() rifiutato = new EventEmitter<any>();
 
   constructor() { }
 
@@ -19,6 +21,13 @@ export class ModalConfermaComponent implements OnChanges{
       keyboard: false
     });
     myModal.toggle();
+  }
+
+  conferma(): void{
+    this.confermato.emit();
+  }
+  rifiuta(): void{
+    this.rifiutato.emit();
   }
 
 }

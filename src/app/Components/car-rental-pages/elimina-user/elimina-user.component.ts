@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Modal} from 'bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../../Service/api-services/users.service';
 import {User} from '../../../Model/User';
@@ -29,9 +28,7 @@ export class EliminaUserComponent implements OnInit {
         this.user = data;
         this.modalConfig = new ModalConfig(
           'Eliminazione utente ' + this.user.username,
-          'Si vuole veramente eliminare l\'utente ' + this.user.username,
-          () => this.eliminaUser(),
-          () => this.tornaAllaHome()
+          'Si vuole veramente eliminare l\'utente ' + this.user.username
         );
       }
     );
