@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AggiungiBtnConfig} from './Config Classes/AggiungiBtnConfig';
+import {Modal} from 'bootstrap';
 
 @Component({
   selector: 'app-aggiungi-elemento',
@@ -15,6 +16,7 @@ export class AggiungiElementoComponent implements OnInit {
   }
 
   aggiungiItem(): void {
-    console.log('aggiunge item');
+    const myModal = new Modal(document.getElementById('addItemModal'), {});
+    myModal.toggle();
   }
 }
