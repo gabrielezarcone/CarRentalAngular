@@ -9,11 +9,20 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {AppRoutingModule} from '../app-routing.module';
 import { FormModificaComponent } from './form-modifica/form-modifica.component';
 import { ModalConfermaComponent } from './modal-conferma/modal-conferma.component';
+import { MostraPrenotazioniComponent } from './mostra-prenotazioni/mostra-prenotazioni.component';
 
 
 
 @NgModule({
-  declarations: [MyButtonComponent, TableComponent, PaginationPipePipe, CrudButtonsComponent, NavBarComponent, FormModificaComponent, ModalConfermaComponent],
+  declarations: [
+    MyButtonComponent,
+    TableComponent,
+    PaginationPipePipe,
+    CrudButtonsComponent,
+    NavBarComponent,
+    FormModificaComponent,
+    ModalConfermaComponent,
+    MostraPrenotazioniComponent],
   imports: [
       CommonModule,
       FormsModule,
@@ -25,7 +34,8 @@ import { ModalConfermaComponent } from './modal-conferma/modal-conferma.componen
     TableComponent,
     NavBarComponent,
     FormModificaComponent,
-    ModalConfermaComponent
+    ModalConfermaComponent,
+    MostraPrenotazioniComponent
   ]
 })
 export class BasicComponentsModule { }
