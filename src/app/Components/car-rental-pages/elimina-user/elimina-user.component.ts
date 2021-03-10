@@ -3,6 +3,7 @@ import {Modal} from 'bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../../Service/api-services/users.service';
 import {User} from '../../../Model/User';
+import {ModalConfig} from '../../../basic-components/modal-conferma/Config Classes/ModalConfig';
 
 @Component({
   selector: 'app-elimina-user',
@@ -12,7 +13,8 @@ import {User} from '../../../Model/User';
 export class EliminaUserComponent implements OnInit {
 
   id = +this.route.snapshot.paramMap.get('id');
-  user: User;
+  user = new User();
+  modalConfig: ModalConfig;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +25,16 @@ export class EliminaUserComponent implements OnInit {
   ngOnInit(): void {
     // Recupero user -----------------------------------------
     this.userService.get(this.id).subscribe(
-      data => this.user = data
+      data => {
+        this.user = data;
+        this.modalConfig = new ModalConfig(
+          'Eliminazione utente ' + this.user.username,
+          'Si vuole veramente eliminare l\'utente ' + this.user.username,
+          () => this.eliminaUser(),
+          () => this.tornaAllaHome()
+        );
+      }
     );
-    // Apre Modal --------------------------------------------
-    const myModal = new Modal(document.getElementById('myModal'), {
-      backdrop: false,
-      keyboard: false
-    });
-    myModal.toggle();
   }
 
   eliminaUser(): void {
@@ -38,6 +42,10 @@ export class EliminaUserComponent implements OnInit {
       data => console.log(data),
       error => console.error(error)
     );
+    this.tornaAllaHome();
+  }
+
+  tornaAllaHome(): void{
     this.router.navigate(['/homeAdmin'], {relativeTo: this.route});
   }
 }
