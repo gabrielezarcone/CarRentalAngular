@@ -1,0 +1,12 @@
+@import "~bootstrap";
+
+.addBtn{
+  @extend .bg-light;
+  @extend .p-2;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5em;
+  &:hover{
+    opacity: 70%;
+  }
+}
