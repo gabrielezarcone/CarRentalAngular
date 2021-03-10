@@ -7,11 +7,12 @@ import { PaginationPipePipe } from './pagination-pipe.pipe';
 import { CrudButtonsComponent } from './crud-buttons/crud-buttons.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {AppRoutingModule} from '../app-routing.module';
+import { FormModificaComponent } from './form-modifica/form-modifica.component';
 
 
 
 @NgModule({
-  declarations: [MyButtonComponent, TableComponent, PaginationPipePipe, CrudButtonsComponent, NavBarComponent],
+  declarations: [MyButtonComponent, TableComponent, PaginationPipePipe, CrudButtonsComponent, NavBarComponent, FormModificaComponent],
     imports: [
         CommonModule,
         FormsModule,
