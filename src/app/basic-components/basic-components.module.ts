@@ -8,11 +8,12 @@ import { CrudButtonsComponent } from './crud-buttons/crud-buttons.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {AppRoutingModule} from '../app-routing.module';
 import { FormModificaComponent } from './form-modifica/form-modifica.component';
+import { ModalConfermaComponent } from './modal-conferma/modal-conferma.component';
 
 
 
 @NgModule({
-  declarations: [MyButtonComponent, TableComponent, PaginationPipePipe, CrudButtonsComponent, NavBarComponent, FormModificaComponent],
+  declarations: [MyButtonComponent, TableComponent, PaginationPipePipe, CrudButtonsComponent, NavBarComponent, FormModificaComponent, ModalConfermaComponent],
   imports: [
       CommonModule,
       FormsModule,
@@ -23,7 +24,8 @@ import { FormModificaComponent } from './form-modifica/form-modifica.component';
     MyButtonComponent,
     TableComponent,
     NavBarComponent,
-    FormModificaComponent
+    FormModificaComponent,
+    ModalConfermaComponent
   ]
 })
 export class BasicComponentsModule { }
