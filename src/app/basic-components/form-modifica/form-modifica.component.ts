@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormField} from './Config Classes/FormField';
 
 @Component({
   selector: 'app-form-modifica',
   templateUrl: './form-modifica.component.html',
   styleUrls: ['./form-modifica.component.scss']
 })
-export class FormModificaComponent implements OnInit {
+export class FormModificaComponent implements OnChanges {
+  @Input() object: any = {};
+  @Input() fields: FormField[];
+  @Output() submitEvent = new EventEmitter<any>();
+  form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    this.form = this.fb.group(this.object);
+  }
+
+  onSubmit(): void{
+    this.object = this.form.value;
+    this.submitEvent.emit(this.object);
   }
 
 }
