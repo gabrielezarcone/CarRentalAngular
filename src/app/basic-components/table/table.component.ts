@@ -97,6 +97,7 @@ export class TableComponent implements OnChanges, OnInit {
   // -------------------------------
   @Input() aggiungiBtnConfig?: AggiungiBtnConfig; // Se viene specificato setta a true aggiungiItem
   aggiungiItem = false; // Indica se la tabella deve presentare un tasto per aggiungere un nuovo elemento
+  newItem: any;
   // -------------------------------
 
   constructor() { }
@@ -109,6 +110,10 @@ export class TableComponent implements OnChanges, OnInit {
 
   ngOnChanges(): void {
     this.renderedData = this.data;
+    // Crea nuovo oggetto della stessa classe dei dati senza valori -------------------------------------------------
+    this.newItem = {...this.data[0]};
+    _.forOwn(this.data[0], (value, key) => this.newItem[key] = undefined );
+    //  -------------------------------------------------------------------------------------------------------------
   }
 
   orderBy(key: string): void {
