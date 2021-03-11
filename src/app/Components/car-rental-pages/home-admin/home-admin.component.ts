@@ -43,7 +43,10 @@ export class HomeAdminComponent implements OnInit {
   }
 
   aggiungiUser(newUser): void {
-    console.log(newUser);
+    this.userService.create(newUser).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
   }
 
 }
