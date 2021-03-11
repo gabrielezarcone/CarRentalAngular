@@ -8,9 +8,11 @@ import {ParcoAutoComponent} from './Components/car-rental-pages/parco-auto/parco
 import {ModificaAutoComponent} from './Components/car-rental-pages/modifica-auto/modifica-auto.component';
 import {EliminaAutoComponent} from './Components/car-rental-pages/elimina-auto/elimina-auto.component';
 import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/lista-prenotazioni-auto/lista-prenotazioni-auto.component';
+import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer/home-customer.component';
 
 const routes: Routes = [
   {path: 'homeAdmin', component: HomeAdminComponent},
+  {path: 'homeCustomer', component: HomeCustomerComponent},
   {path: 'modifica/user/:id', component: ModificaUserComponent},
   {path: 'elimina/user/:id', component: EliminaUserComponent},
   {path: 'prenotazioni/user/:id', component: ListaPrenotazioniComponent},
