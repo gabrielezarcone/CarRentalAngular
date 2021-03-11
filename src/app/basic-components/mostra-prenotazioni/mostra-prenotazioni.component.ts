@@ -13,25 +13,11 @@ export class MostraPrenotazioniComponent implements OnInit {
   @Input() tipo; // Valori possibili: user|auto. Viene indicato se devo mostrare le prenotazioni in base all'utente o all'auto
   prenotazioni: Prenotazione[];
   @Input() itemId: number;
+  @Input() isAdmin = false;
   // Tabella ******************************************
   private headers: MyHeaders[]; // Definiti da ngOnInit poichè usano this.tipo
   private order = new MyOrder('inizio', 'asc');
-  crudBtns: MyButtonConfig[] = [
-    new MyButtonConfig(
-      'Approva',
-      'btn-primary',
-      'check2',
-      undefined,
-      (row) => this.approvaPrenotazione(row),
-      (row: any) => this.condizioneVisibilita(row)),
-    new MyButtonConfig(
-      'Rifiuta',
-      'btn-dark',
-      'trash',
-      undefined,
-      (row) => this.rifiutaPrenotazione(row),
-      (row: any) => this.condizioneVisibilita(row))
-  ];
+  crudBtns: MyButtonConfig[] = [];
   tableConfig: TableConfig;
   // ****************************************** Tabella
 
@@ -58,6 +44,25 @@ export class MostraPrenotazioniComponent implements OnInit {
       this.prenotazioneService.getByAuto(this.itemId).subscribe(
         data => this.prenotazioni = data
       );
+    }
+    // Inserisce i CRUD buttons solo se isAdmin è true ---------------
+    if (this.isAdmin){
+      this.crudBtns = [
+        new MyButtonConfig(
+          'Approva',
+          'btn-primary',
+          'check2',
+          undefined,
+          (row) => this.approvaPrenotazione(row),
+          (row: any) => this.condizioneVisibilita(row)),
+        new MyButtonConfig(
+          'Rifiuta',
+          'btn-dark',
+          'trash',
+          undefined,
+          (row) => this.rifiutaPrenotazione(row),
+          (row: any) => this.condizioneVisibilita(row))
+      ];
     }
   }
 
