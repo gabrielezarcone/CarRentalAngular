@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-lista-prenotazioni',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaPrenotazioniComponent implements OnInit {
   tipoListaPrenotazioni = 'user';
+  id = +this.route.snapshot.paramMap.get('id');
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
