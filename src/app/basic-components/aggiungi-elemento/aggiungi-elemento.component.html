@@ -11,7 +11,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <app-form-modifica [object]="newItem" (submitEvent)="conferma()" [fields]="newItemFields"></app-form-modifica>
+        <app-form-modifica [object]="newItem" (submitEvent)="conferma($event)" [fields]="newItemFields"></app-form-modifica>
       </div>
     </div>
   </div>

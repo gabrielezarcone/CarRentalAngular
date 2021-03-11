@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {AggiungiBtnConfig} from './Config Classes/AggiungiBtnConfig';
 import {Modal} from 'bootstrap';
 import {FormField} from '../form-modifica/Config Classes/FormField';
@@ -11,7 +11,6 @@ import {FormField} from '../form-modifica/Config Classes/FormField';
 export class AggiungiElementoComponent implements OnInit, OnChanges {
   @Input() config: AggiungiBtnConfig;
   @Input() newItem: any;
-  @Output() confermato = new EventEmitter();
   newItemFields: FormField[] = [];
 
   constructor() { }
@@ -32,7 +31,7 @@ export class AggiungiElementoComponent implements OnInit, OnChanges {
     myModal.toggle();
   }
 
-  conferma(): void{
-    this.confermato.emit();
+  conferma(item): void{
+    this.config.aggiungiItem(item);
   }
 }
