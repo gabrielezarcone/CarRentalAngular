@@ -3,6 +3,7 @@ import {MyHeaders, MyOrder, TableConfig} from '../../../basic-components/table/t
 import {MyButtonConfig} from '../../../basic-components/my-button/my-button.component';
 import {AutoService} from '../../../Service/api-services/auto.service';
 import {Auto} from '../../../Model/Auto';
+import {AggiungiBtnConfig} from '../../../basic-components/aggiungi-elemento/Config Classes/AggiungiBtnConfig';
 
 @Component({
   selector: 'app-parco-auto',
@@ -29,6 +30,7 @@ export class ParcoAutoComponent implements OnInit {
     new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
   ];
   // ****************************************** Tabella
+  newAutoBtn: AggiungiBtnConfig = new AggiungiBtnConfig('plus-square');
 
   constructor(private autoService: AutoService) { }
 
