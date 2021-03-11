@@ -44,7 +44,7 @@ export class HomeAdminComponent implements OnInit {
 
   aggiungiUser(newUser): void {
     this.userService.create(newUser).subscribe(
-      data => console.log(data),
+      data => window.location.reload(),
       error => console.error(error)
     );
   }

@@ -42,7 +42,7 @@ export class ParcoAutoComponent implements OnInit {
 
   aggiungiAuto(newAuto): void {
     this.autoService.create(newAuto).subscribe(
-      data => console.log(data),
+      data => window.location.reload(),
       error => console.error(error)
     );
   }
