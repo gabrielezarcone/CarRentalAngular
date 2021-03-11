@@ -26,9 +26,9 @@ export class HomeAdminComponent implements OnInit {
   tableConfig = new TableConfig(this.headers, this.order);
   tableData: User[];
   tableCrudBtns: MyButtonConfig[] = [
-    new MyButtonConfig('Modifica', 'btn-success', 'pen', (user) => '/modifica/user/' + user.id),
-    new MyButtonConfig('Elimina', 'btn-danger' , 'x-octagon', (user) => '/elimina/user/' + user.id),
-    new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list', (user) => '/prenotazioni/user/' + user.id)
+    new MyButtonConfig('', 'btn-success', 'pen', (user) => '/modifica/user/' + user.id),
+    new MyButtonConfig('', 'btn-danger' , 'x-octagon', (user) => '/elimina/user/' + user.id),
+    new MyButtonConfig('', 'btn-primary' , 'list', (user) => '/prenotazioni/user/' + user.id)
   ];
   // ****************************************** Tabella
   aggiungi = new AggiungiBtnConfig('person-plus', (newUser) => this.aggiungiUser(newUser));
