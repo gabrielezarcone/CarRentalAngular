@@ -10,6 +10,7 @@ import {AppRoutingModule} from '../app-routing.module';
 import { FormModificaComponent } from './form-modifica/form-modifica.component';
 import { ModalConfermaComponent } from './modal-conferma/modal-conferma.component';
 import { MostraPrenotazioniComponent } from './mostra-prenotazioni/mostra-prenotazioni.component';
+import { AggiungiElementoComponent } from './aggiungi-elemento/aggiungi-elemento.component';
 
 
 
@@ -22,7 +23,8 @@ import { MostraPrenotazioniComponent } from './mostra-prenotazioni/mostra-prenot
     NavBarComponent,
     FormModificaComponent,
     ModalConfermaComponent,
-    MostraPrenotazioniComponent],
+    MostraPrenotazioniComponent,
+    AggiungiElementoComponent],
   imports: [
       CommonModule,
       FormsModule,

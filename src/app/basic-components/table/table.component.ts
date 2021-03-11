@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import * as _ from 'lodash';
 import {MyButtonConfig} from '../my-button/my-button.component';
+import {AggiungiBtnConfig} from '../aggiungi-elemento/Config Classes/AggiungiBtnConfig';
 
 export class TableConfig{
   headers: MyHeaders[];
@@ -84,7 +85,7 @@ export class MyHeaders{
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnChanges {
+export class TableComponent implements OnChanges, OnInit {
   @Input() config: TableConfig;
   @Input() data: any[];
   renderedData: any[];
@@ -94,11 +95,25 @@ export class TableComponent implements OnChanges {
   // -------------------------------
   @Input() crudBtns: MyButtonConfig[];
   // -------------------------------
+  @Input() aggiungiBtnConfig?: AggiungiBtnConfig; // Se viene specificato setta a true aggiungiItem
+  aggiungiItem = false; // Indica se la tabella deve presentare un tasto per aggiungere un nuovo elemento
+  newItem: any;
+  // -------------------------------
 
   constructor() { }
 
+  ngOnInit(): void {
+    if (this.aggiungiBtnConfig !== undefined){
+      this.aggiungiItem = true;
+    }
+  }
+
   ngOnChanges(): void {
     this.renderedData = this.data;
+    // Crea nuovo oggetto della stessa classe dei dati senza valori -------------------------------------------------
+    this.newItem = {...this.data[0]};
+    _.forOwn(this.data[0], (value, key) => this.newItem[key] = undefined );
+    //  -------------------------------------------------------------------------------------------------------------
   }
 
   orderBy(key: string): void {
@@ -169,7 +184,7 @@ export class TableComponent implements OnChanges {
         this.config.pagination.currentPage = 0;
       }
       else if (currentPage > this.config.pagination.totalPageNumber){
-        this.config.pagination.currentPage = this.config.pagination.totalPageNumber-1;
+        this.config.pagination.currentPage = this.config.pagination.totalPageNumber - 1;
       }
       else {
         this.config.pagination.currentPage = currentPage;
