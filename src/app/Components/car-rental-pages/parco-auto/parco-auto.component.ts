@@ -30,7 +30,7 @@ export class ParcoAutoComponent implements OnInit {
     new MyButtonConfig('Prenotazioni', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
   ];
   // ****************************************** Tabella
-  newAutoBtn: AggiungiBtnConfig = new AggiungiBtnConfig('plus-square');
+  newAutoBtn: AggiungiBtnConfig = new AggiungiBtnConfig('plus-square', (newAuto) => this.aggiungiAuto(newAuto));
 
   constructor(private autoService: AutoService) { }
 
@@ -40,4 +40,10 @@ export class ParcoAutoComponent implements OnInit {
     );
   }
 
+  aggiungiAuto(newAuto): void {
+    this.autoService.create(newAuto).subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
+  }
 }
