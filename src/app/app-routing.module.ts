@@ -9,7 +9,7 @@ import {ModificaAutoComponent} from './Components/car-rental-pages/modifica-auto
 import {EliminaAutoComponent} from './Components/car-rental-pages/elimina-auto/elimina-auto.component';
 import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer/home-customer.component';
-import {AuthGuardsService} from './Service/basic-services/AuthGuards/auth-guards.service';
+import {AuthGuardsService} from './Service/basic-services/Guards/AuthGuards/auth-guards.service';
 
 const routes: Routes = [
   {
