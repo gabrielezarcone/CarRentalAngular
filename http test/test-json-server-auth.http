@@ -1,0 +1,22 @@
+### Secondo documentazione di json-server-auth
+### https://www.npmjs.com/package/json-server-auth
+
+### Registra nuovo utente ---------------------------------------------
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{
+  "email": "prova@prova.com",
+  "password": "1234"
+}
+
+### Valida email e password restituendo un tocken JWT -----------------
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+  "email": "prova@prova.com",
+  "password": "1234"
+}
+
+###
