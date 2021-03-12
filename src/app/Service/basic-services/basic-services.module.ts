@@ -5,6 +5,7 @@ import {TokenInterceptorService} from './HttpInterceptors/token-interceptor.serv
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthGuardsService} from './AuthGuards/auth-guards.service';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {RoleGuardService} from './Guards/RoleGuard/role-guard.service';
 
 
 
@@ -13,6 +14,7 @@ import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
   providers: [
     AuthService,
     AuthGuardsService,
+    RoleGuardService,
     JwtHelperService,
     {
       provide: HTTP_INTERCEPTORS,
