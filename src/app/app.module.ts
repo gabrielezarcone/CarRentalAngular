@@ -7,6 +7,7 @@ import {BasicComponentsModule} from './basic-components/basic-components.module'
 import {ApiServicesModule} from './Service/api-services/api-services.module';
 import {CarRentalPagesModule} from './Components/car-rental-pages/car-rental-pages.module';
 import { AppRoutingModule } from './app-routing.module';
+import {BasicServicesModule} from './Service/basic-services/basic-services.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     BasicComponentsModule,
     ApiServicesModule,
     CarRentalPagesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BasicServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
