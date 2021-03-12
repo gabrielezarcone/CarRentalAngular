@@ -10,6 +10,7 @@ import {EliminaAutoComponent} from './Components/car-rental-pages/elimina-auto/e
 import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer/home-customer.component';
 import {RoleGuardService} from './Service/basic-services/Guards/RoleGuard/role-guard.service';
+import {LoginComponent} from './Components/car-rental-pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,10 @@ const routes: Routes = [
     data: {
       expectedRole: 'ROLE_ADMIN'
     }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
 ];
 

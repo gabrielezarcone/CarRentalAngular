@@ -13,6 +13,7 @@ import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
 import { EliminaAutoComponent } from './elimina-auto/elimina-auto.component';
 import { ListaPrenotazioniAutoComponent } from './lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 import { HomeCustomerComponent } from './home-customer/home-customer.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -26,7 +27,8 @@ import { HomeCustomerComponent } from './home-customer/home-customer.component';
     ModificaAutoComponent,
     EliminaAutoComponent,
     ListaPrenotazioniAutoComponent,
-    HomeCustomerComponent
+    HomeCustomerComponent,
+    LoginComponent
   ],
   exports: [
     HomeAdminComponent,
