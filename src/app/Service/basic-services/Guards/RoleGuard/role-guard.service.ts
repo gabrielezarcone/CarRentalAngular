@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AuthService} from '../../AuthService/auth.service';
 import {ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
 import {UserRuoliService} from '../../../api-services/user-ruoli.service';
+import { map } from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class RoleGuardService implements CanActivate{
@@ -13,15 +15,19 @@ export class RoleGuardService implements CanActivate{
     private usersRolesService: UserRuoliService
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const expectedRole = route.data.expectedRole;
     const tokenPayload = this.auth.decodeToken();
-    const userRole = this.usersRolesService.roleByUser(tokenPayload.id);
+    return this.usersRolesService.roleByUser(tokenPayload.sub).pipe( // sub = userId nel token
+      map((ruolo) => {
+        console.log(ruolo);
+        if (this.auth.isTokenExpired() || ruolo.ruolo !== expectedRole){
+          this.router.navigate(['/login'], {relativeTo: this.route});
+          return false;
+        }
+        return true;
+      })
+    );
 
-    if (this.auth.isTokenExpired() || userRole !== expectedRole){
-      this.router.navigate(['/login'], {relativeTo: this.route});
-      return false;
-    }
-    return true;
   }
 }

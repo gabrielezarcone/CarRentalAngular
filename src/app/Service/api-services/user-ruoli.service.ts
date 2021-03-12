@@ -16,12 +16,12 @@ export class UserRuoliService extends AbstractApiService<UserRuoli> {
   }
 
   userRoleByUser(userId: number): Observable<UserRuoli>{
-    return this.http.get<any>(this.baseUrl + '/users/' + userId + '/user_ruoli/');
+    return this.http.get<any>('http://localhost:8000/users/' + userId + '/user_ruoli/');
   }
 
   roleByUser(userId: number): Observable<Ruolo>{
     return this.userRoleByUser(userId).pipe(
-      mergeMap(userRole => this.http.get<any>(this.baseUrl + '/ruolo/' + userRole.ruoloId))
+      mergeMap(userRoleArray => this.http.get<any>('http://localhost:8000/ruolo/' + userRoleArray[0].ruoloId))
     );
   }
 }
