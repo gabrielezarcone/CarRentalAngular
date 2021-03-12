@@ -14,6 +14,7 @@ import { EliminaAutoComponent } from './elimina-auto/elimina-auto.component';
 import { ListaPrenotazioniAutoComponent } from './lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 import { HomeCustomerComponent } from './home-customer/home-customer.component';
 import { LoginComponent } from './login/login.component';
+import {BasicServicesModule} from '../../Service/basic-services/basic-services.module';
 
 
 
@@ -39,7 +40,8 @@ import { LoginComponent } from './login/login.component';
     ApiServicesModule,
     BasicComponentsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BasicServicesModule
   ]
 })
 export class CarRentalPagesModule { }
