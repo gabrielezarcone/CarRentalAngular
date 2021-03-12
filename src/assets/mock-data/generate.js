@@ -14,6 +14,7 @@ module.exports = function(){
       birthDate: '',
       deleted: false,
       username: 'admin',
+      email: 'admin@admin.com',
       password: 'admin'
     }], _.times(usersNumber, num => {
       return {
@@ -23,6 +24,7 @@ module.exports = function(){
         birthDate: faker.date.past(),
         deleted: faker.random.boolean(),
         username: faker.internet.userName(),
+        email: faker.internet.email(),
         password: faker.internet.password()
       }
     })),
