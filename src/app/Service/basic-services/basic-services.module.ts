@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AuthService} from './AuthService/auth.service';
 import {TokenInterceptorService} from './HttpInterceptors/token-interceptor.service';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthGuardsService} from './AuthGuards/auth-guards.service';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 
 
 
@@ -12,6 +13,7 @@ import {AuthGuardsService} from './AuthGuards/auth-guards.service';
   providers: [
     AuthService,
     AuthGuardsService,
+    JwtHelperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
@@ -19,7 +21,14 @@ import {AuthGuardsService} from './AuthGuards/auth-guards.service';
     }
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        allowedDomains: ['localhost'],
+        disallowedRoutes: [''],
+      },
+    }),
   ]
 })
 export class BasicServicesModule { }
