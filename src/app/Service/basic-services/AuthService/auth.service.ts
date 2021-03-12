@@ -8,7 +8,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  baseUrl  = 'http://localhost:8000/register';
+  baseUrl  = 'http://localhost:8000/';
 
   constructor(
     private http: HttpClient,
@@ -16,11 +16,17 @@ export class AuthService {
   ) { }
 
   private static setSession(authRes): void{
-    localStorage.setItem('jwtToken', authRes);
+    localStorage.setItem('jwtToken', authRes.accessToken);
+  }
+
+  register(email: string, password: string): void{
+    this.http.post<User>(this.baseUrl + 'register', {email, password}).subscribe(
+      res => AuthService.setSession(res)
+    );
   }
 
   login(email: string, password: string): void{
-    this.http.post<User>(this.baseUrl, {email, password}).subscribe(
+    this.http.post<User>(this.baseUrl + 'login', {email, password}).subscribe(
       res => AuthService.setSession(res)
     );
   }
