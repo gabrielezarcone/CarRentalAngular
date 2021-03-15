@@ -111,8 +111,10 @@ export class TableComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     this.renderedData = this.data;
     // Crea nuovo oggetto della stessa classe dei dati senza valori -------------------------------------------------
-    this.newItem = {...this.data[0]};
-    _.forOwn(this.data[0], (value, key) => this.newItem[key] = undefined );
+    if (this.data){
+      this.newItem = {...this.data[0]};
+      _.forOwn(this.data[0], (value, key) => this.newItem[key] = undefined );
+    }
     //  -------------------------------------------------------------------------------------------------------------
   }
 

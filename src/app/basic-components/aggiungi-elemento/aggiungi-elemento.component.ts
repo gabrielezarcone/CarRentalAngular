@@ -19,9 +19,11 @@ export class AggiungiElementoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    for (const key of Object.keys(this.newItem)){
-      if (key !== 'id'){
-        this.newItemFields.push(new FormField(key, key));
+    if (this.newItem){
+      for (const key of Object.keys(this.newItem)){
+        if (key !== 'id'){
+          this.newItemFields.push(new FormField(key, key));
+        }
       }
     }
   }
