@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../../Model/User';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Ruolo} from '../../../Model/Ruolo';
 import {UserRuoliService} from '../../api-services/user-ruoli.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {UsersService} from '../../api-services/users.service';
 
 @Injectable({
@@ -15,6 +15,8 @@ import {UsersService} from '../../api-services/users.service';
 export class AuthService {
 
   baseUrl  = 'http://localhost:8000/';
+  tokenName = 'jwtToken';
+  loginErrorEvent = new Subject<HttpErrorResponse>();
 
   constructor(
     private http: HttpClient,
@@ -26,7 +28,7 @@ export class AuthService {
   ) { }
 
   private setSession(authRes): void{
-    localStorage.setItem('jwtToken', authRes.accessToken);
+    localStorage.setItem(this.tokenName, authRes.accessToken);
     this.router.navigate(['/home'], {relativeTo: this.route});
   }
 
@@ -38,17 +40,22 @@ export class AuthService {
 
   login(email: string, password: string): void{
     this.http.post<User>(this.baseUrl + 'login', {email, password}).subscribe(
-      res => this.setSession(res)
+      res => this.setSession(res),
+      error => this.loginError(error)
     );
   }
 
+  loginError(error: any): void{
+    this.loginErrorEvent.next(error);
+  }
+
   logout(): void{
-    localStorage.removeItem('jwtToken');
+    localStorage.removeItem(this.tokenName);
     location.reload();
   }
 
   getToken(): string{
-    return localStorage.getItem('jwtToken');
+    return localStorage.getItem(this.tokenName);
   }
 
   decodeToken(): any{
@@ -88,6 +95,6 @@ export class AuthService {
 
   // True se l'utente è loggato
   isLogged(): boolean{
-    return localStorage.getItem('jwtToken') !== null;
+    return localStorage.getItem(this.tokenName) !== null;
   }
 }

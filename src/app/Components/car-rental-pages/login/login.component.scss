@@ -1,6 +1,16 @@
 @import "~bootstrap";
 
 .loginForm{
+  @extend .centerElement;
+}
+
+.loginErrorMessage{
+  @extend .alert;
+  @extend .alert-danger;
+  @extend .centerElement;
+}
+
+.centerElement{
   @extend .w-25;
   @extend .m-auto;
   @extend .mt-5;

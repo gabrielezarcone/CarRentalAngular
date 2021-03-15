@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   });
+  loginErrorMessage: string;
 
   constructor(
     private fb: FormBuilder,
@@ -24,6 +25,9 @@ export class LoginComponent implements OnInit {
   onSubmit(): void{
     const credential = this.loginForm.value;
     this.auth.login(credential.email, credential.password);
+    this.auth.loginErrorEvent.subscribe(
+      errorObject => this.loginErrorMessage = errorObject.error
+    );
   }
 
 }

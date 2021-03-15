@@ -1,3 +1,7 @@
+<div *ngIf="loginErrorMessage" class="loginErrorMessage" role="alert">
+  {{loginErrorMessage}}
+</div>
+
 <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
   <div class="mb-3">
     <label for="email" class="form-label">Indirizzo email</label>
