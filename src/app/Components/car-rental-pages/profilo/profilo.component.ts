@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../Model/User';
 import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
+import {MyButtonConfig} from '../../../basic-components/my-button/my-button.component';
 
 @Component({
   selector: 'app-profilo',
@@ -9,6 +10,11 @@ import {AuthService} from '../../../Service/basic-services/AuthService/auth.serv
 })
 export class ProfiloComponent implements OnInit {
   user: User;
+  modificaBtn: MyButtonConfig = new MyButtonConfig(
+    'Modifica informazioni',
+    'btn-primary',
+    'pen'
+  );
 
   constructor(
     private auth: AuthService
