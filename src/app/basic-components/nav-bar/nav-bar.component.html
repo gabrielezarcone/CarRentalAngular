@@ -11,5 +11,8 @@
         <a *ngFor="let elem of navElements" class="nav-link" routerLink="{{elem.href}}">{{elem.label}}</a>
       </div>
     </div>
+    <div>
+      <app-my-button [buttonConfig]="btnConfig"></app-my-button>
+    </div>
   </div>
 </nav>
