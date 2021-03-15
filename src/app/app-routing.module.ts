@@ -11,6 +11,7 @@ import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/list
 import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer/home-customer.component';
 import {RoleGuardService} from './Service/basic-services/Guards/RoleGuard/role-guard.service';
 import {LoginComponent} from './Components/car-rental-pages/login/login.component';
+import {HomeComponent} from './Components/car-rental-pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
 ];
 
