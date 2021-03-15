@@ -25,11 +25,7 @@ export class ParcoAutoComponent implements OnInit {
   // ------------------------------
   tableConfig = new TableConfig(this.headers, this.order);
   tableData: Auto[];
-  tableCrudBtns: MyButtonConfig[] = [
-    new MyButtonConfig('', 'btn-success', 'pen', (auto) => '/modifica/auto/' + auto.id),
-    new MyButtonConfig('', 'btn-danger' , 'x-octagon', (auto) => '/elimina/auto/' + auto.id),
-    new MyButtonConfig('', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
-  ];
+  tableCrudBtns: MyButtonConfig[] = [];
   // ****************************************** Tabella
   newAutoBtn: AggiungiBtnConfig = undefined;
 
@@ -46,6 +42,11 @@ export class ParcoAutoComponent implements OnInit {
       isAdmin => {
         if (isAdmin){
           this.newAutoBtn = new AggiungiBtnConfig('plus-square', (newAuto) => this.aggiungiAuto(newAuto));
+          this.tableCrudBtns = [
+            new MyButtonConfig('', 'btn-success', 'pen', (auto) => '/modifica/auto/' + auto.id),
+            new MyButtonConfig('', 'btn-danger' , 'x-octagon', (auto) => '/elimina/auto/' + auto.id),
+            new MyButtonConfig('', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
+          ]
         }
       }
     );
