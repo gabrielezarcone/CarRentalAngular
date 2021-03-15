@@ -64,6 +64,18 @@ export class MostraPrenotazioniComponent implements OnChanges {
           (row: any) => this.condizioneVisibilita(row))
       ];
     }
+    else {
+      this.crudBtns = [
+        new MyButtonConfig(
+          'Modifica',
+          'btn-warning',
+          'pen',
+          undefined,
+          undefined,
+          (row: any) => true
+        )
+      ];
+    }
   }
 
   condizioneVisibilita(row: any): boolean{
