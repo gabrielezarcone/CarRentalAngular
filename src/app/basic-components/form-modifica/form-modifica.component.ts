@@ -8,10 +8,10 @@ import {FormField} from './Config Classes/FormField';
   styleUrls: ['./form-modifica.component.scss']
 })
 export class FormModificaComponent implements OnChanges {
-  @Input() object: any = {};
+  @Input() object: any;
   @Input() fields: FormField[];
   @Output() submitEvent = new EventEmitter<any>();
-  form: FormGroup = this.fb.group({});
+  form: FormGroup;
 
   constructor(
     private fb: FormBuilder
