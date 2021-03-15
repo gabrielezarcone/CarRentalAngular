@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../../Model/User';
+import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
 
 @Component({
   selector: 'app-profilo',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profilo.component.scss']
 })
 export class ProfiloComponent implements OnInit {
+  user: User;
 
-  constructor() { }
+  constructor(
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.auth.loggedUser().subscribe(
+      user => this.user = user
+    );
   }
 
 }
