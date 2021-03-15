@@ -3,6 +3,7 @@ import {Prenotazione} from '../../Model/Prenotazione';
 import {MyHeaders, MyOrder, TableConfig} from '../table/table.component';
 import {MyButtonConfig} from '../my-button/my-button.component';
 import {PrenotazioneService} from '../../Service/api-services/prenotazione.service';
+import {AggiungiBtnConfig} from '../aggiungi-elemento/Config Classes/AggiungiBtnConfig';
 
 @Component({
   selector: 'app-mostra-prenotazioni',
@@ -20,6 +21,7 @@ export class MostraPrenotazioniComponent implements OnChanges {
   private order = new MyOrder('inizio', 'asc');
   crudBtns: MyButtonConfig[] = [];
   tableConfig: TableConfig;
+  @Input() aggiungiBtnConfig?: AggiungiBtnConfig = undefined;
   // ****************************************** Tabella
 
   constructor(
