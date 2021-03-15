@@ -25,7 +25,7 @@ export class AuthService {
 
   private setSession(authRes): void{
     localStorage.setItem('jwtToken', authRes.accessToken);
-    this.router.navigate(['/homeAdmin'], {relativeTo: this.route});
+    this.router.navigate(['/home'], {relativeTo: this.route});
   }
 
   register(email: string, password: string): void{

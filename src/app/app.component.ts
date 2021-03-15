@@ -9,7 +9,7 @@ import {NavBarElement} from './basic-components/nav-bar/ConfigClasses/NavBarElem
 export class AppComponent implements OnInit{
   appTitle = 'CarRental';
   navElements: NavBarElement[] = [
-    new NavBarElement('Home', '/homeAdmin'),
+    new NavBarElement('Home', '/home'),
     new NavBarElement('Auto', '/auto'),
     new NavBarElement('Profilo', '#')
   ];
