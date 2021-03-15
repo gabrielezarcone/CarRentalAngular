@@ -11,14 +11,16 @@ export class FormModificaComponent implements OnChanges {
   @Input() object: any = {};
   @Input() fields: FormField[];
   @Output() submitEvent = new EventEmitter<any>();
-  form: FormGroup;
+  form: FormGroup = this.fb.group({});
 
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnChanges(): void {
-    this.form = this.fb.group(this.object);
+    if (this.object){
+      this.form = this.fb.group(this.object);
+    }
   }
 
   onSubmit(): void{

@@ -11,7 +11,6 @@ export class TokenInterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.auth.getToken();
     if (token){
-      console.log('interceted');
       const jwtRequest = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.auth.getToken()}`
