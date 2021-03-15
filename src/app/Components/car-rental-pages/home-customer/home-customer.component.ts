@@ -6,6 +6,7 @@ import {FormField} from '../../../basic-components/form-modifica/Config Classes/
 import {Modal} from 'bootstrap';
 import {PrenotazioneService} from '../../../Service/api-services/prenotazione.service';
 import {Router} from '@angular/router';
+import {AggiungiBtnConfig} from '../../../basic-components/aggiungi-elemento/Config Classes/AggiungiBtnConfig';
 
 @Component({
   selector: 'app-home-customer',
@@ -21,6 +22,10 @@ export class HomeCustomerComponent implements OnInit {
     new FormField('auto', 'Id Auto'),
   ];
   modal;
+  aggiungiBtn: AggiungiBtnConfig = new AggiungiBtnConfig(
+    'bookmark-plus',
+    (nuovaPrenotazione) => this.addPrenotazione(nuovaPrenotazione)
+  );
 
 
   constructor(
@@ -54,5 +59,17 @@ export class HomeCustomerComponent implements OnInit {
 
   toggleModal(): void{
     this.modal.toggle();
+  }
+
+  addPrenotazione(nuovaPrenotazione): void{
+    nuovaPrenotazione.stato = 'PENDING';
+    nuovaPrenotazione.user = this.user.id;
+    this.prenotazioneService.create(nuovaPrenotazione).subscribe(
+      _ => {
+        this.toggleModal();
+        this.router.navigateByUrl('/home');
+      },
+      error => console.error(error)
+    );
   }
 }

@@ -1,5 +1,5 @@
 <h1>Ciao <strong>{{user.username}}!</strong></h1>
-<app-mostra-prenotazioni [tipo]="'user'" [itemId]="user.id" (modificaPrenotazione)="apriModalModifica($event)"></app-mostra-prenotazioni>
+<app-mostra-prenotazioni [tipo]="'user'" [itemId]="user.id" (modificaPrenotazione)="apriModalModifica($event)" [aggiungiBtnConfig]="aggiungiBtn"></app-mostra-prenotazioni>
 
 <!--Modal per modificare la prenotazione -->
 <div id="modificaPrenotazioneModal" class="modal" tabindex="-1">
