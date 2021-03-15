@@ -31,3 +31,17 @@ Content-Type: application/json
 }
 
 ###
+### Aggiorna la prenotazione con id 157 -----------------
+PUT http://localhost:8000/prenotazioni/157
+Content-Type: application/json
+
+{
+  "auto": 21,
+  "fine": "2021-04-19T21:08:22.746Z",
+  "id": 157,
+  "inizio": "2021-04-12T08:20:09.962Z",
+  "stato": "RIFIUTATO",
+  "user": 1
+}
+
+###

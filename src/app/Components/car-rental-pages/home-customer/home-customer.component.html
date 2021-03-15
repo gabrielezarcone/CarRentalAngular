@@ -1,2 +1,17 @@
 <h1>Ciao <strong>{{user.username}}!</strong></h1>
-<app-mostra-prenotazioni [tipo]="'user'" [itemId]="user.id"></app-mostra-prenotazioni>
+<app-mostra-prenotazioni [tipo]="'user'" [itemId]="user.id" (modificaPrenotazione)="apriModalModifica($event)" [aggiungiBtnConfig]="aggiungiBtn"></app-mostra-prenotazioni>
+
+<!--Modal per modificare la prenotazione -->
+<div id="modificaPrenotazioneModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifica la prenotazione</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-form-modifica [object]="prenotazioneScelta" (submitEvent)="confermaModifica($event)" [fields]="fieldsPrenotazione"></app-form-modifica>
+      </div>
+    </div>
+  </div>
+</div>

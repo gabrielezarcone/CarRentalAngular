@@ -12,6 +12,8 @@ generaUtenze(100);
 function generaUtenze(numeroUtenti){
   // registra almeno 1 utenza admin
   registraAdmin();
+  // registra dei customer predefiniti
+  registraCustomerNonCasuali();
   // registra n utenze create con faker
   _.times(numeroUtenti, num => registraUser({
       id: num+1,
@@ -119,4 +121,16 @@ function ruoloAdmin(userId){
 
   req.write(data)
   req.end()
+}
+
+function registraCustomerNonCasuali(){
+  registraUser({
+    name: 'Mario',
+    surname: 'Rossi',
+    birthDate: '',
+    deleted: false,
+    username: 'mr',
+    email: 'mr@mr.com',
+    password: 'mariorossi'
+  })
 }
