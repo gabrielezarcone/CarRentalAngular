@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   navElements: NavBarElement[] = [
     new NavBarElement('Home', '/home'),
     new NavBarElement('Auto', '/auto'),
-    new NavBarElement('Profilo', '#')
+    new NavBarElement('Profilo', '/profilo')
   ];
   constructor(){}
 
