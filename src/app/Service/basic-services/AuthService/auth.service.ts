@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../../Model/User';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Ruolo} from '../../../Model/Ruolo';
 import {UserRuoliService} from '../../api-services/user-ruoli.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {UsersService} from '../../api-services/users.service';
 
 @Injectable({
@@ -16,6 +16,7 @@ export class AuthService {
 
   baseUrl  = 'http://localhost:8000/';
   tokenName = 'jwtToken';
+  loginErrorEvent = new Subject<HttpErrorResponse>();
 
   constructor(
     private http: HttpClient,
@@ -39,8 +40,13 @@ export class AuthService {
 
   login(email: string, password: string): void{
     this.http.post<User>(this.baseUrl + 'login', {email, password}).subscribe(
-      res => this.setSession(res)
+      res => this.setSession(res),
+      error => this.loginError(error)
     );
+  }
+
+  loginError(error: any): void{
+    this.loginErrorEvent.next(error);
   }
 
   logout(): void{
