@@ -16,19 +16,25 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.auth.loggedUserRole().subscribe(
-      ruolo => {
-        if (ruolo.ruolo === 'ROLE_ADMIN'){
-          this.router.navigateByUrl('/homeAdmin');
+    const ruoloObservable = this.auth.loggedUserRole();
+    if (ruoloObservable){
+      ruoloObservable.subscribe(
+        ruolo => {
+          if (ruolo.ruolo === 'ROLE_ADMIN'){
+            this.router.navigateByUrl('/homeAdmin');
+          }
+          else if (ruolo.ruolo === 'ROLE_CUSTOMER'){
+            this.router.navigateByUrl('/homeCustomer');
+          }
+          else {
+            this.router.navigateByUrl('/login');
+          }
         }
-        else if (ruolo.ruolo === 'ROLE_CUSTOMER'){
-          this.router.navigateByUrl('/homeCustomer');
-        }
-        else {
-          this.router.navigateByUrl('/login');
-        }
-      }
-    );
+      );
+    }
+    else {
+      this.router.navigateByUrl('/login');
+    }
   }
 
 }
