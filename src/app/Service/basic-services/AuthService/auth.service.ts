@@ -75,4 +75,13 @@ export class AuthService {
     const tokenPayload = this.decodeToken();
     return this.userService.get(tokenPayload.sub);
   }
+
+  // True se l'utente loggato è un admin
+  isAdmin(): Observable<boolean> {
+    return this.loggedUserRole().pipe(
+      map((ruolo) => {
+          return ruolo.ruolo === 'ROLE_ADMIN';
+        })
+    );
+  }
 }
