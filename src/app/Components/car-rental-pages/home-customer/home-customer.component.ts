@@ -5,6 +5,7 @@ import {Prenotazione} from '../../../Model/Prenotazione';
 import {FormField} from '../../../basic-components/form-modifica/Config Classes/FormField';
 import {Modal} from 'bootstrap';
 import {PrenotazioneService} from '../../../Service/api-services/prenotazione.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-customer',
@@ -19,26 +20,39 @@ export class HomeCustomerComponent implements OnInit {
     new FormField('fine', 'Fine Prenotazione'),
     new FormField('auto', 'Id Auto'),
   ];
+  modal;
 
 
   constructor(
     private auth: AuthService,
-    private prenotazioneService: PrenotazioneService
+    private prenotazioneService: PrenotazioneService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.auth.loggedUser().subscribe(
       user => this.user = user
     );
+    this.modal = new Modal(document.getElementById('modificaPrenotazioneModal'), {});
   }
 
   apriModalModifica(prenotazione: Prenotazione): void {
     this.prenotazioneScelta = {...prenotazione};
-    const myModal = new Modal(document.getElementById('modificaPrenotazioneModal'), {});
-    myModal.toggle();
+    this.toggleModal();
   }
 
   confermaModifica(prenotazioneModificata: Prenotazione): void {
-    this.prenotazioneService.update(prenotazioneModificata.id, prenotazioneModificata);
+    console.log(prenotazioneModificata);
+    this.prenotazioneService.update(prenotazioneModificata.id, prenotazioneModificata).subscribe(
+      _ => {
+        this.toggleModal();
+        this.router.navigateByUrl('/home');
+      },
+      error => console.error(error)
+    );
+  }
+
+  toggleModal(): void{
+    this.modal.toggle();
   }
 }
