@@ -103,9 +103,6 @@ export class TableComponent implements OnChanges, OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.aggiungiBtnConfig !== undefined){
-      this.aggiungiItem = true;
-    }
   }
 
   ngOnChanges(): void {
@@ -116,6 +113,9 @@ export class TableComponent implements OnChanges, OnInit {
       _.forOwn(this.data[0], (value, key) => this.newItem[key] = undefined );
     }
     //  -------------------------------------------------------------------------------------------------------------
+    if (this.aggiungiBtnConfig !== undefined){
+      this.aggiungiItem = true;
+    }
   }
 
   orderBy(key: string): void {

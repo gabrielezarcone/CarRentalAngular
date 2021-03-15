@@ -4,6 +4,7 @@ import {MyButtonConfig} from '../../../basic-components/my-button/my-button.comp
 import {AutoService} from '../../../Service/api-services/auto.service';
 import {Auto} from '../../../Model/Auto';
 import {AggiungiBtnConfig} from '../../../basic-components/aggiungi-elemento/Config Classes/AggiungiBtnConfig';
+import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
 
 @Component({
   selector: 'app-parco-auto',
@@ -30,13 +31,23 @@ export class ParcoAutoComponent implements OnInit {
     new MyButtonConfig('', 'btn-primary' , 'list', (auto) => '/prenotazioni/auto/' + auto.id)
   ];
   // ****************************************** Tabella
-  newAutoBtn: AggiungiBtnConfig = new AggiungiBtnConfig('plus-square', (newAuto) => this.aggiungiAuto(newAuto));
+  newAutoBtn: AggiungiBtnConfig = undefined;
 
-  constructor(private autoService: AutoService) { }
+  constructor(
+    private autoService: AutoService,
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.autoService.getAll().subscribe(
       data => this.tableData = data
+    );
+    this.auth.isAdmin().subscribe(
+      isAdmin => {
+        if (isAdmin){
+          this.newAutoBtn = new AggiungiBtnConfig('plus-square', (newAuto) => this.aggiungiAuto(newAuto));
+        }
+      }
     );
   }
 
