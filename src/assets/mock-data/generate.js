@@ -28,15 +28,13 @@ module.exports = function(){
         ruolo: 'ROLE_CUSTOMER'
       }
     ],
-    user_ruoli: _.concat([{
-      userId: 0,
-      ruoloId: 0
-    }], _.times(100, num => {
+    user_ruoli: _.times(100, num => {
       return {
-        userId: num+1,
+        id: num,
+        userId: num,
         ruoloId: 1
       }
-    })),
+    }),
     prenotazioni: _.times(prenotazioniNumber, num => {
       return {
         id: num,
