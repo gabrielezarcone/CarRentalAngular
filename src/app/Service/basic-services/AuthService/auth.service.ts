@@ -15,6 +15,7 @@ import {UsersService} from '../../api-services/users.service';
 export class AuthService {
 
   baseUrl  = 'http://localhost:8000/';
+  tokenName = 'jwtToken';
 
   constructor(
     private http: HttpClient,
@@ -26,7 +27,7 @@ export class AuthService {
   ) { }
 
   private setSession(authRes): void{
-    localStorage.setItem('jwtToken', authRes.accessToken);
+    localStorage.setItem(this.tokenName, authRes.accessToken);
     this.router.navigate(['/home'], {relativeTo: this.route});
   }
 
@@ -43,12 +44,12 @@ export class AuthService {
   }
 
   logout(): void{
-    localStorage.removeItem('jwtToken');
+    localStorage.removeItem(this.tokenName);
     location.reload();
   }
 
   getToken(): string{
-    return localStorage.getItem('jwtToken');
+    return localStorage.getItem(this.tokenName);
   }
 
   decodeToken(): any{
@@ -88,6 +89,6 @@ export class AuthService {
 
   // True se l'utente è loggato
   isLogged(): boolean{
-    return localStorage.getItem('jwtToken') !== null;
+    return localStorage.getItem(this.tokenName) !== null;
   }
 }
