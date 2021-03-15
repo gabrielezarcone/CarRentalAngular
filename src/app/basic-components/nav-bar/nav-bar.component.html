@@ -11,5 +11,8 @@
         <a *ngFor="let elem of navElements" class="nav-link" routerLink="{{elem.href}}">{{elem.label}}</a>
       </div>
     </div>
+    <div *ngIf="showLogOut">
+      <app-my-button [buttonConfig]="btnConfig" (click)="logout()"></app-my-button>
+    </div>
   </div>
 </nav>

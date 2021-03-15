@@ -44,6 +44,7 @@ export class AuthService {
 
   logout(): void{
     localStorage.removeItem('jwtToken');
+    location.reload();
   }
 
   getToken(): string{
@@ -83,5 +84,10 @@ export class AuthService {
           return ruolo.ruolo === 'ROLE_ADMIN';
         })
     );
+  }
+
+  // True se l'utente è loggato
+  isLogged(): boolean{
+    return localStorage.getItem('jwtToken') !== null;
   }
 }
