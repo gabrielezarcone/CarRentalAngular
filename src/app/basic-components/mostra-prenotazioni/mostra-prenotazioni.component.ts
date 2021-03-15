@@ -72,7 +72,7 @@ export class MostraPrenotazioniComponent implements OnChanges {
           'pen',
           undefined,
           undefined,
-          (row: any) => true
+          (row: any) => this.possibilitaModifica(row)
         )
       ];
     }
@@ -80,6 +80,12 @@ export class MostraPrenotazioniComponent implements OnChanges {
 
   condizioneVisibilita(row: any): boolean{
     return row.stato === 'PENDING';
+  }
+  possibilitaModifica(row: any): boolean{
+    const today = Date.now();
+    const inizio = Date.parse(row.inizio);
+    const dateDiff = Math.round((inizio - today) / (1000 * 60 * 60 * 24));
+    return  dateDiff > 2;
   }
 
   approvaPrenotazione(prenotazione: Prenotazione): void{
