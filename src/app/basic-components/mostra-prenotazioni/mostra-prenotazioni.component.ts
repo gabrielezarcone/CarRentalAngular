@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Prenotazione} from '../../Model/Prenotazione';
 import {MyHeaders, MyOrder, TableConfig} from '../table/table.component';
 import {MyButtonConfig} from '../my-button/my-button.component';
@@ -14,6 +14,7 @@ export class MostraPrenotazioniComponent implements OnChanges {
   prenotazioni: Prenotazione[];
   @Input() itemId: number;
   @Input() isAdmin = false;
+  @Output() modificaPrenotazione = new EventEmitter();
   // Tabella ******************************************
   private headers: MyHeaders[]; // Definiti da ngOnInit poichè usano this.tipo
   private order = new MyOrder('inizio', 'asc');
@@ -71,7 +72,7 @@ export class MostraPrenotazioniComponent implements OnChanges {
           'btn-warning',
           'pen',
           undefined,
-          undefined,
+          (row) => this.modifica(row) ,
           (row: any) => this.possibilitaModifica(row)
         )
       ];
@@ -102,4 +103,7 @@ export class MostraPrenotazioniComponent implements OnChanges {
     );
   }
 
+  modifica(row): void{
+    this.modificaPrenotazione.emit(row);
+  }
 }
