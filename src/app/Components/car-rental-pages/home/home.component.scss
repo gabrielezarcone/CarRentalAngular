@@ -1,0 +1,11 @@
+@import "~bootstrap";
+
+.homeSpinner{
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .mt-5;
+  .spinner-border{
+    width: 5rem;
+    height: 5rem;
+  }
+}

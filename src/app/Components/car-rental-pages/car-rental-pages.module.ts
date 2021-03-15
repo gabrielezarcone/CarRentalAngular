@@ -15,6 +15,7 @@ import { ListaPrenotazioniAutoComponent } from './lista-prenotazioni-auto/lista-
 import { HomeCustomerComponent } from './home-customer/home-customer.component';
 import { LoginComponent } from './login/login.component';
 import {BasicServicesModule} from '../../Service/basic-services/basic-services.module';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -29,7 +30,8 @@ import {BasicServicesModule} from '../../Service/basic-services/basic-services.m
     EliminaAutoComponent,
     ListaPrenotazioniAutoComponent,
     HomeCustomerComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   exports: [
     HomeAdminComponent,
