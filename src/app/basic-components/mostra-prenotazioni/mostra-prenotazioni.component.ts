@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Prenotazione} from '../../Model/Prenotazione';
 import {MyHeaders, MyOrder, TableConfig} from '../table/table.component';
 import {MyButtonConfig} from '../my-button/my-button.component';
@@ -9,7 +9,7 @@ import {PrenotazioneService} from '../../Service/api-services/prenotazione.servi
   templateUrl: './mostra-prenotazioni.component.html',
   styleUrls: ['./mostra-prenotazioni.component.scss']
 })
-export class MostraPrenotazioniComponent implements OnInit {
+export class MostraPrenotazioniComponent implements OnChanges {
   @Input() tipo; // Valori possibili: user|auto. Viene indicato se devo mostrare le prenotazioni in base all'utente o all'auto
   prenotazioni: Prenotazione[];
   @Input() itemId: number;
@@ -25,7 +25,7 @@ export class MostraPrenotazioniComponent implements OnInit {
     private prenotazioneService: PrenotazioneService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     // Imposta headers in base al tipo ------------------
     this.headers = [
       new MyHeaders('inizio', 'Inizio'),

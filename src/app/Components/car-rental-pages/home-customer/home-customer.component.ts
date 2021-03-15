@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../Model/User';
+import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
 
 @Component({
   selector: 'app-home-customer',
@@ -7,18 +8,16 @@ import {User} from '../../../Model/User';
   styleUrls: ['./home-customer.component.scss']
 })
 export class HomeCustomerComponent implements OnInit {
-  user: User = new User( // hardcoded temporaneamente finchè non viene creato il login
-    2,
-    'Nome',
-    'Cogonme',
-    undefined,
-    false,
-    'prova1'
-  );
+  user: User = new User();
 
-  constructor() { }
+  constructor(
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.auth.loggedUser().subscribe(
+      user => this.user = user
+    );
   }
 
 }

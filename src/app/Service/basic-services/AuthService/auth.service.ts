@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {Ruolo} from '../../../Model/Ruolo';
 import {UserRuoliService} from '../../api-services/user-ruoli.service';
 import {Observable} from 'rxjs';
+import {UsersService} from '../../api-services/users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class AuthService {
     private jwtHelper: JwtHelperService,
     private router: Router,
     private route: ActivatedRoute,
-    private usersRolesService: UserRuoliService
+    private usersRolesService: UserRuoliService,
+    private userService: UsersService
   ) { }
 
   private setSession(authRes): void{
@@ -67,5 +69,10 @@ export class AuthService {
         })
       );
     }
+  }
+
+  loggedUser(): Observable<User>{
+    const tokenPayload = this.decodeToken();
+    return this.userService.get(tokenPayload.sub);
   }
 }
