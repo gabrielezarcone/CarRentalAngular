@@ -18,16 +18,24 @@ export class RoleGuardService implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const expectedRole = route.data.expectedRole;
     const tokenPayload = this.auth.decodeToken();
-    return this.usersRolesService.roleByUser(tokenPayload.sub).pipe( // sub = userId nel token
-      map((ruolo) => {
-        console.log(ruolo);
-        if (this.auth.isTokenExpired() || ruolo.ruolo !== expectedRole){
-          this.router.navigate(['/login'], {relativeTo: this.route});
-          return false;
-        }
-        return true;
-      })
-    );
+    if (tokenPayload){
+      return this.usersRolesService.roleByUser(tokenPayload.sub).pipe( // sub = userId nel token
+        map((ruolo) => {
+          console.log(ruolo);
+          if (this.auth.isTokenExpired() || ruolo.ruolo !== expectedRole){
+            this.loginRedirect();
+            return false;
+          }
+          return true;
+        })
+      );
+    }
+    else {
+      this.loginRedirect();
+    }
+  }
 
+  private loginRedirect(): void{
+    this.router.navigate(['/login'], {relativeTo: this.route});
   }
 }
