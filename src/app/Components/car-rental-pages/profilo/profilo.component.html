@@ -9,5 +9,5 @@
   <p>{{user.surname}}</p>
   <h2>Data di nascita:</h2>
   <p>{{user.birthDate}}</p>
-  <app-my-button [buttonConfig]="modificaBtn"></app-my-button>
+  <app-my-button [buttonConfig]="modificaBtn" (click)="modificaUser()"></app-my-button>
 </div>

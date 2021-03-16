@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../../Model/User';
 import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
 import {MyButtonConfig} from '../../../basic-components/my-button/my-button.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profilo',
@@ -17,7 +18,8 @@ export class ProfiloComponent implements OnInit {
   );
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,4 +28,7 @@ export class ProfiloComponent implements OnInit {
     );
   }
 
+  modificaUser(): void {
+    this.router.navigateByUrl('/modifica/user', {state: {id: this.user.id}});
+  }
 }
