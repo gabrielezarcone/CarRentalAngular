@@ -9,17 +9,99 @@ import {ModificaAutoComponent} from './Components/car-rental-pages/modifica-auto
 import {EliminaAutoComponent} from './Components/car-rental-pages/elimina-auto/elimina-auto.component';
 import {ListaPrenotazioniAutoComponent} from './Components/car-rental-pages/lista-prenotazioni-auto/lista-prenotazioni-auto.component';
 import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer/home-customer.component';
+import {RoleGuardService} from './Service/basic-services/Guards/RoleGuard/role-guard.service';
+import {LoginComponent} from './Components/car-rental-pages/login/login.component';
+import {HomeComponent} from './Components/car-rental-pages/home/home.component';
+import {AuthGuardsService} from './Service/basic-services/Guards/AuthGuards/auth-guards.service';
+import {ProfiloComponent} from './Components/car-rental-pages/profilo/profilo.component';
 
 const routes: Routes = [
-  {path: 'homeAdmin', component: HomeAdminComponent},
-  {path: 'homeCustomer', component: HomeCustomerComponent},
-  {path: 'modifica/user/:id', component: ModificaUserComponent},
-  {path: 'elimina/user/:id', component: EliminaUserComponent},
-  {path: 'prenotazioni/user/:id', component: ListaPrenotazioniComponent},
-  {path: 'auto', component: ParcoAutoComponent},
-  {path: 'modifica/auto/:id', component: ModificaAutoComponent},
-  {path: 'elimina/auto/:id', component: EliminaAutoComponent},
-  {path: 'prenotazioni/auto/:id', component: ListaPrenotazioniAutoComponent},
+  {
+    path: 'homeAdmin',
+    component: HomeAdminComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'homeCustomer',
+    component: HomeCustomerComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'modifica/user/:id',
+    component: ModificaUserComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'modifica/user',
+    component: ModificaUserComponent,
+    canActivate: [AuthGuardsService],
+  },
+  {
+    path: 'elimina/user/:id',
+    component: EliminaUserComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'prenotazioni/user/:id',
+    component: ListaPrenotazioniComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'auto',
+    component: ParcoAutoComponent
+  },
+  {
+    path: 'modifica/auto/:id',
+    component: ModificaAutoComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'elimina/auto/:id',
+    component: EliminaAutoComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'prenotazioni/auto/:id',
+    component: ListaPrenotazioniAutoComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'profilo',
+    component: ProfiloComponent,
+    canActivate: [AuthGuardsService]
+  },
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ export class Prenotazione{
   user: number;
   auto: number;
 
-  constructor(id: number, inizio: Date, fine: Date, stato: string, user: number, auto: number) {
+  constructor(id?: number, inizio?: Date, fine?: Date, stato?: string, user?: number, auto?: number) {
     this.id = id;
     this.inizio = inizio;
     this.fine = fine;

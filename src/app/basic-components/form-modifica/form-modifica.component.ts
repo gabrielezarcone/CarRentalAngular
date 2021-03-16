@@ -8,7 +8,7 @@ import {FormField} from './Config Classes/FormField';
   styleUrls: ['./form-modifica.component.scss']
 })
 export class FormModificaComponent implements OnChanges {
-  @Input() object: any = {};
+  @Input() object: any;
   @Input() fields: FormField[];
   @Output() submitEvent = new EventEmitter<any>();
   form: FormGroup;
@@ -18,7 +18,9 @@ export class FormModificaComponent implements OnChanges {
   ) { }
 
   ngOnChanges(): void {
-    this.form = this.fb.group(this.object);
+    if (this.object){
+      this.form = this.fb.group(this.object);
+    }
   }
 
   onSubmit(): void{

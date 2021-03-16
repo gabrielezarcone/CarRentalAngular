@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UsersService} from '../../../Service/api-services/users.service';
 import { Location } from '@angular/common';
 import {FormField} from '../../../basic-components/form-modifica/Config Classes/FormField';
+import {AuthService} from '../../../Service/basic-services/AuthService/auth.service';
 
 @Component({
   selector: 'app-modifica-user',
@@ -17,6 +18,7 @@ export class ModificaUserComponent implements OnInit {
   id = +this.route.snapshot.paramMap.get('id');
   formFields = [
     new FormField('username', 'Username', 'text'),
+    new FormField('email', 'Email', 'text'),
     new FormField('name', 'Nome', 'text'),
     new FormField('surname', 'Cognome', 'text')
   ];
@@ -25,7 +27,8 @@ export class ModificaUserComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private userService: UsersService
+    private userService: UsersService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -41,8 +44,15 @@ export class ModificaUserComponent implements OnInit {
   }
 
   getUser(): void{
-    this.userService.get(this.id).subscribe(
-      user => this.user = user
-    );
+    if (this.id){
+      this.userService.get(this.id).subscribe(
+        user => this.user = user
+      );
+    }
+    else {
+      this.auth.loggedUser().subscribe(
+        user => this.user = user
+      );
+    }
   }
 }

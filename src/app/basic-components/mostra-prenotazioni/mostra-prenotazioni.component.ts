@@ -1,31 +1,34 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Prenotazione} from '../../Model/Prenotazione';
 import {MyHeaders, MyOrder, TableConfig} from '../table/table.component';
 import {MyButtonConfig} from '../my-button/my-button.component';
 import {PrenotazioneService} from '../../Service/api-services/prenotazione.service';
+import {AggiungiBtnConfig} from '../aggiungi-elemento/Config Classes/AggiungiBtnConfig';
 
 @Component({
   selector: 'app-mostra-prenotazioni',
   templateUrl: './mostra-prenotazioni.component.html',
   styleUrls: ['./mostra-prenotazioni.component.scss']
 })
-export class MostraPrenotazioniComponent implements OnInit {
+export class MostraPrenotazioniComponent implements OnChanges {
   @Input() tipo; // Valori possibili: user|auto. Viene indicato se devo mostrare le prenotazioni in base all'utente o all'auto
   prenotazioni: Prenotazione[];
   @Input() itemId: number;
   @Input() isAdmin = false;
+  @Output() modificaPrenotazione = new EventEmitter();
   // Tabella ******************************************
   private headers: MyHeaders[]; // Definiti da ngOnInit poichè usano this.tipo
   private order = new MyOrder('inizio', 'asc');
   crudBtns: MyButtonConfig[] = [];
   tableConfig: TableConfig;
+  @Input() aggiungiBtnConfig?: AggiungiBtnConfig = undefined;
   // ****************************************** Tabella
 
   constructor(
     private prenotazioneService: PrenotazioneService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     // Imposta headers in base al tipo ------------------
     this.headers = [
       new MyHeaders('inizio', 'Inizio'),
@@ -37,12 +40,26 @@ export class MostraPrenotazioniComponent implements OnInit {
     // Recupera le prenotazioni in base al tipo ---------------
     if (this.tipo === 'user'){
       this.prenotazioneService.getByUser(this.itemId).subscribe(
-        data => this.prenotazioni = data
+        data => {
+          if (data.length !== 0){
+            this.prenotazioni = data;
+          }
+          else {
+            this.prenotazioni = [new Prenotazione()];
+          }
+        }
       );
     }
     else if (this.tipo === 'auto'){
       this.prenotazioneService.getByAuto(this.itemId).subscribe(
-        data => this.prenotazioni = data
+        data => {
+          if (data.length !== 0){
+            this.prenotazioni = data;
+          }
+          else {
+            this.prenotazioni = [new Prenotazione()];
+          }
+        }
       );
     }
     // Inserisce i CRUD buttons solo se isAdmin è true ---------------
@@ -64,10 +81,28 @@ export class MostraPrenotazioniComponent implements OnInit {
           (row: any) => this.condizioneVisibilita(row))
       ];
     }
+    else {
+      this.crudBtns = [
+        new MyButtonConfig(
+          'Modifica',
+          'btn-warning',
+          'pen',
+          undefined,
+          (row) => this.modifica(row) ,
+          (row: any) => this.possibilitaModifica(row)
+        )
+      ];
+    }
   }
 
   condizioneVisibilita(row: any): boolean{
     return row.stato === 'PENDING';
+  }
+  possibilitaModifica(row: any): boolean{
+    const today = Date.now();
+    const inizio = Date.parse(row.inizio);
+    const dateDiff = Math.round((inizio - today) / (1000 * 60 * 60 * 24));
+    return  dateDiff > 2;
   }
 
   approvaPrenotazione(prenotazione: Prenotazione): void{
@@ -84,4 +119,7 @@ export class MostraPrenotazioniComponent implements OnInit {
     );
   }
 
+  modifica(row): void{
+    this.modificaPrenotazione.emit(row);
+  }
 }

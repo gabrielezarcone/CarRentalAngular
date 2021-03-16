@@ -7,25 +7,7 @@ module.exports = function(){
   const prenotazioniNumber = 200;
 
   return {
-    users: _.concat([{
-      id: 0,
-      name: '',
-      surname: '',
-      birthDate: '',
-      deleted: false,
-      username: 'admin',
-      password: 'admin'
-    }], _.times(usersNumber, num => {
-      return {
-        id: num+1,
-        name: faker.name.firstName(),
-        surname: faker.name.lastName(),
-        birthDate: faker.date.past(),
-        deleted: faker.random.boolean(),
-        username: faker.internet.userName(),
-        password: faker.internet.password()
-      }
-    })),
+    users: [],
     auto: _.times(autoNumber, num => {
       return {
         id: num,
@@ -46,15 +28,13 @@ module.exports = function(){
         ruolo: 'ROLE_CUSTOMER'
       }
     ],
-    user_ruoli: _.concat([{
-      userId: 0,
-      ruoloId: 0
-    }], _.times(100, num => {
+    user_ruoli: _.times(100, num => {
       return {
-        userId: num+1,
+        id: num,
+        userId: num,
         ruoloId: 1
       }
-    })),
+    }),
     prenotazioni: _.times(prenotazioniNumber, num => {
       return {
         id: num,

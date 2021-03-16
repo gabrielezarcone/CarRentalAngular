@@ -43,6 +43,6 @@ export class EliminaUserComponent implements OnInit {
   }
 
   tornaAllaHome(): void{
-    this.router.navigate(['/homeAdmin'], {relativeTo: this.route});
+    this.router.navigate(['/home'], {relativeTo: this.route});
   }
 }

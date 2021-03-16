@@ -1,6 +1,9 @@
 @import "~bootstrap";
 
 .bootstrapForms{
+  @extend .w-25;
+  @extend .m-auto;
+  @extend .mt-5;
   label{
     @extend .form-label;
   }
