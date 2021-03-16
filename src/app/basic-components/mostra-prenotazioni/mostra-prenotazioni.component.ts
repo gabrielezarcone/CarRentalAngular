@@ -40,12 +40,26 @@ export class MostraPrenotazioniComponent implements OnChanges {
     // Recupera le prenotazioni in base al tipo ---------------
     if (this.tipo === 'user'){
       this.prenotazioneService.getByUser(this.itemId).subscribe(
-        data => this.prenotazioni = data
+        data => {
+          if (data.length !== 0){
+            this.prenotazioni = data;
+          }
+          else {
+            this.prenotazioni = [new Prenotazione()];
+          }
+        }
       );
     }
     else if (this.tipo === 'auto'){
       this.prenotazioneService.getByAuto(this.itemId).subscribe(
-        data => this.prenotazioni = data
+        data => {
+          if (data.length !== 0){
+            this.prenotazioni = data;
+          }
+          else {
+            this.prenotazioni = [new Prenotazione()];
+          }
+        }
       );
     }
     // Inserisce i CRUD buttons solo se isAdmin è true ---------------
