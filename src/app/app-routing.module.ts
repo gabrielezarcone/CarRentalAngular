@@ -12,6 +12,8 @@ import {HomeCustomerComponent} from './Components/car-rental-pages/home-customer
 import {RoleGuardService} from './Service/basic-services/Guards/RoleGuard/role-guard.service';
 import {LoginComponent} from './Components/car-rental-pages/login/login.component';
 import {HomeComponent} from './Components/car-rental-pages/home/home.component';
+import {AuthGuardsService} from './Service/basic-services/Guards/AuthGuards/auth-guards.service';
+import {ProfiloComponent} from './Components/car-rental-pages/profilo/profilo.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,11 @@ const routes: Routes = [
     data: {
       expectedRole: 'ROLE_ADMIN'
     }
+  },
+  {
+    path: 'modifica/user',
+    component: ModificaUserComponent,
+    canActivate: [AuthGuardsService],
   },
   {
     path: 'elimina/user/:id',
@@ -89,6 +96,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'profilo',
+    component: ProfiloComponent,
+    canActivate: [AuthGuardsService]
   },
 ];
 

@@ -16,6 +16,7 @@ import { HomeCustomerComponent } from './home-customer/home-customer.component';
 import { LoginComponent } from './login/login.component';
 import {BasicServicesModule} from '../../Service/basic-services/basic-services.module';
 import { HomeComponent } from './home/home.component';
+import { ProfiloComponent } from './profilo/profilo.component';
 
 
 
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     ListaPrenotazioniAutoComponent,
     HomeCustomerComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProfiloComponent
   ],
   exports: [
     HomeAdminComponent,
