@@ -24,7 +24,8 @@ export class HomeCustomerComponent implements OnInit {
   modal;
   aggiungiBtn: AggiungiBtnConfig = new AggiungiBtnConfig(
     'bookmark-plus',
-    (nuovaPrenotazione) => this.addPrenotazione(nuovaPrenotazione)
+    (nuovaPrenotazione) => this.addPrenotazione(nuovaPrenotazione),
+    ['user']
   );
 
 
