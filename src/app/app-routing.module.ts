@@ -41,6 +41,11 @@ const routes: Routes = [
     }
   },
   {
+    path: 'modifica/user',
+    component: ModificaUserComponent,
+    canActivate: [AuthGuardsService],
+  },
+  {
     path: 'elimina/user/:id',
     component: EliminaUserComponent,
     canActivate: [RoleGuardService],
