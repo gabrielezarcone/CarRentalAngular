@@ -18,6 +18,7 @@ export class ModificaUserComponent implements OnInit {
   id = +this.route.snapshot.paramMap.get('id');
   formFields = [
     new FormField('username', 'Username', 'text'),
+    new FormField('email', 'Email', 'text'),
     new FormField('name', 'Nome', 'text'),
     new FormField('surname', 'Cognome', 'text')
   ];
